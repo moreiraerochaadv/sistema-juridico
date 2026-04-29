@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Moreira &amp; Rocha Advogados Associados | Sistema Jurídico</title>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#0d1b2e;--navy2:#142038;
+  --gold:#c9a24a;--gold2:#e0b96a;--goldpale:#fdf6e7;
+  --cream:#f8f5f0;--cream2:#ede8df;
+  --text:#1a1a2e;--muted:#6b7280;--white:#fff;
+  --red:#991b1b;--redl:#fee2e2;
+  --green:#14532d;--greenl:#dcfce7;
+  --orange:#c2410c;--orangel:#fff7ed;
+  --blue:#1d4ed8;--bluel:#dbeafe;
+  --sidebar:240px;
+  --topbar:54px;
+  --shadow:0 2px 12px rgba(13,27,46,0.09);
+  --r:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;overflow:hidden;font-family:'Outfit',sans-serif;background:var(--cream);color:var(--text);}
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:99px;}
+
+/* ── LOGIN ── */
+.login-wrap{height:100vh;display:flex;align-items:center;justify-content:center;background:var(--navy);position:relative;overflow:hidden;}
+.login-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 60%,rgba(201,162,74,0.10) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 80% 20%,rgba(201,162,74,0.07) 0%,transparent 60%);}
+.login-lines{position:absolute;inset:0;opacity:0.03;background-image:repeating-linear-gradient(0deg,transparent,transparent 50px,rgba(201,162,74,1) 50px,rgba(201,162,74,1) 51px),repeating-linear-gradient(90deg,transparent,transparent 50px,rgba(201,162,74,1) 50px,rgba(201,162,74,1) 51px);}
+.login-card{width:min(400px,90vw);background:#fff;border-radius:20px;padding:40px 36px;box-shadow:0 20px 60px rgba(0,0,0,0.3);position:relative;z-index:1;border:1px solid rgba(201,162,74,0.15);animation:fadeUp .5s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.login-logo-wrap{text-align:center;margin-bottom:24px;}
+.login-logo-wrap img{height:66px;object-fit:contain;}
+.login-card h2{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--navy);text-align:center;margin-bottom:4px;font-weight:700;}
+.login-card .sub{color:var(--muted);font-size:12.5px;text-align:center;margin-bottom:24px;line-height:1.5;}
+.login-divider{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:11px;margin:12px 0;}
+.login-divider::before,.login-divider::after{content:'';flex:1;height:1px;background:var(--cream2);}
+.login-users-box{background:var(--cream);border-radius:8px;padding:12px;font-size:11.5px;color:var(--muted);line-height:1.7;margin-top:14px;border:1px solid var(--cream2);}
+.login-users-box strong{color:var(--navy);display:block;margin-bottom:3px;font-size:10px;text-transform:uppercase;letter-spacing:.06em;}
+
+/* ── BTNS ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:none;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:500;border-radius:8px;transition:all .15s;font-size:13px;padding:10px 16px;text-decoration:none;white-space:nowrap;}
+.btn-primary{background:var(--navy);color:#fff;}
+.btn-primary:hover{background:var(--navy2);}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#fff;}
+.btn-gold:hover{filter:brightness(1.08);}
+.btn-outline{background:transparent;color:var(--muted);border:1.5px solid var(--cream2);}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.5);padding:8px 12px;font-size:12px;}
+.btn-ghost:hover{color:rgba(255,255,255,0.9);}
+.btn-sm{padding:7px 12px;font-size:12px;}
+.btn-google{background:#fff;color:var(--text);border:1.5px solid #e5e7eb;width:100%;padding:12px;font-size:13.5px;}
+.btn-google:hover{border-color:var(--gold);background:var(--cream);}
+.btn-demo{background:var(--cream2);color:var(--navy);border:1.5px solid rgba(201,162,74,0.2);width:100%;padding:12px;font-size:13.5px;}
+.btn-demo:hover{border-color:var(--gold);}
+.btn-tbl{border:none;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:600;border-radius:6px;font-size:11px;padding:4px 9px;transition:all .15s;text-decoration:none;display:inline-flex;align-items:center;}
+.btn-gold-sm{background:var(--goldpale);color:#92400e;}
+.btn-gold-sm:hover{background:var(--gold2);color:#fff;}
+.btn-del{background:var(--redl);color:var(--red);}
+.btn-del:hover{background:#fecaca;}
+.btn-ok{background:var(--greenl);color:var(--green);}
+.btn-ok:hover{background:#bbf7d0;}
+
+/* ── APP LAYOUT — 100vh sem scroll ── */
+.app{display:none;height:100vh;flex-direction:row;}
+
+/* SIDEBAR */
+.sidebar{
+  width:var(--sidebar);height:100vh;flex-shrink:0;
+  background:var(--navy);display:flex;flex-direction:column;
+  border-right:1px solid rgba(255,255,255,0.06);
+  overflow:hidden;
+}
+.sidebar-logo{padding:16px 14px 14px;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.sidebar-logo img.logo-icon{width:32px;height:32px;object-fit:contain;flex-shrink:0;}
+.sidebar-logo-text h1{font-family:'Cormorant Garamond',serif;font-size:13.5px;color:var(--gold);line-height:1.25;font-weight:700;}
+.sidebar-logo-text p{font-size:9px;color:rgba(255,255,255,0.3);margin-top:1px;text-transform:uppercase;letter-spacing:.06em;}
+.sidebar-user{margin:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(201,162,74,0.12);border-radius:8px;padding:9px 11px;flex-shrink:0;}
+.sidebar-user-name{font-size:12px;font-weight:600;color:var(--gold2);display:block;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sidebar-user-role{font-size:10px;color:rgba(255,255,255,0.38);}
+.sidebar-nav{flex:1;padding:4px 8px;overflow-y:auto;}
+.nav-group-label{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,0.22);padding:10px 6px 3px;font-weight:600;}
+.nav-btn{width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:transparent;color:rgba(255,255,255,0.52);border-radius:7px;cursor:pointer;font-family:'Outfit',sans-serif;font-size:12.5px;text-align:left;transition:all .13s;margin-bottom:1px;border-left:2px solid transparent;}
+.nav-btn:hover{background:rgba(201,162,74,0.09);color:rgba(255,255,255,0.82);}
+.nav-btn.active{background:rgba(201,162,74,0.14);color:var(--gold2);font-weight:600;border-left-color:var(--gold);}
+.nav-btn.locked{opacity:.28;cursor:not-allowed;}
+.nav-icon{font-size:14px;width:16px;text-align:center;flex-shrink:0;}
+.sidebar-footer{padding:10px;border-top:1px solid rgba(255,255,255,0.07);flex-shrink:0;}
+
+/* CONTENT AREA */
+.content-area{flex:1;display:flex;flex-direction:column;height:100vh;overflow:hidden;min-width:0;}
+
+/* TOPBAR */
+.topbar{height:var(--topbar);flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border-bottom:1px solid var(--cream2);background:var(--white);}
+.topbar-left h2{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--navy);font-weight:700;line-height:1;}
+.topbar-left p{color:var(--muted);font-size:11px;margin-top:1px;}
+.topbar-right{display:flex;gap:7px;align-items:center;}
+
+/* MAIN SCROLL AREA */
+.main-scroll{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:14px;}
+
+/* SECTIONS */
+.section{display:none;flex:1;flex-direction:column;gap:12px;min-height:0;}
+.section.active-section{display:flex;}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;flex-shrink:0;}
+.stat-card{background:var(--white);border-radius:var(--r);padding:14px 16px;border:1px solid var(--cream2);box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));}
+.stat-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);}
+.stat-value{font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--navy);line-height:1;margin:4px 0 2px;}
+.stat-sub{font-size:11px;color:var(--muted);}
+
+/* DASHBOARD BODY */
+.dash-body{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;min-height:0;}
+.dash-card{background:var(--white);border-radius:var(--r);padding:14px 16px;border:1px solid var(--cream2);box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:0;overflow:hidden;}
+.dash-card h3{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--navy);margin-bottom:10px;font-weight:600;flex-shrink:0;}
+.dash-card-body{flex:1;overflow-y:auto;}
+
+/* AGENDA ITEMS */
+.ag-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--cream2);}
+.ag-item:last-child{border-bottom:none;}
+.ag-date{flex-shrink:0;width:36px;height:36px;background:var(--navy);border-radius:7px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.ag-day{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);font-weight:700;line-height:1;}
+.ag-mon{font-size:8px;color:rgba(255,255,255,0.4);text-transform:uppercase;}
+.ag-info h4{font-size:12px;font-weight:600;color:var(--navy);}
+.ag-info p{font-size:10px;color:var(--muted);}
+.empty-txt{color:var(--muted);font-size:12px;padding:8px 0;}
+
+/* ALERTAS */
+.al-item{padding:7px 10px;border-radius:7px;font-size:12px;margin-bottom:6px;border:1px solid;}
+.al-danger{background:var(--redl);border-color:#fecaca;color:var(--red);}
+.al-warn{background:var(--orangel);border-color:#fed7aa;color:#9a3412;}
+.al-ok{background:var(--greenl);border-color:#bbf7d0;color:var(--green);}
+
+/* CALENDAR */
+.cal-placeholder{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);text-align:center;gap:8px;}
+.cal-icon{font-size:32px;opacity:.3;}
+.cal-placeholder p{font-size:12px;line-height:1.5;}
+
+/* FINANCEIRO DASH */
+.fin-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;}
+.fin-row span{color:var(--muted);}
+.fin-row strong{color:var(--navy);}
+.fin-bar{height:5px;background:var(--cream2);border-radius:99px;overflow:hidden;margin:6px 0 4px;}
+.fin-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:99px;}
+.fin-pct{font-size:10px;color:var(--muted);}
+
+/* TWO-PANEL layout for most sections */
+.two-panel{flex:1;display:grid;grid-template-columns:320px 1fr;gap:12px;min-height:0;}
+.two-panel .panel-left{display:flex;flex-direction:column;gap:10px;overflow-y:auto;}
+.two-panel .panel-right{display:flex;flex-direction:column;min-height:0;overflow:hidden;}
+
+/* FORMS */
+.form-box{background:var(--white);border-radius:var(--r);padding:16px;border:1px solid var(--cream2);box-shadow:var(--shadow);flex-shrink:0;}
+.form-box h3{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--navy);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--cream2);font-weight:600;}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.fg .full{grid-column:1/-1;}
+.fg1{display:grid;grid-template-columns:1fr;gap:8px;}
+.fgroup{display:flex;flex-direction:column;gap:3px;}
+.fgroup label{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+.fgroup input,.fgroup select,.fgroup textarea{width:100%;border:1.5px solid var(--cream2);border-radius:7px;padding:7px 10px;font-size:12.5px;font-family:'Outfit',sans-serif;background:var(--cream);color:var(--text);transition:border-color .15s;}
+.fgroup input:focus,.fgroup select:focus,.fgroup textarea:focus{outline:none;border-color:var(--gold);background:var(--white);}
+.fgroup textarea{min-height:60px;resize:vertical;}
+.form-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
+
+/* TABLE BOX */
+.table-box{background:var(--white);border-radius:var(--r);border:1px solid var(--cream2);box-shadow:var(--shadow);display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;}
+.table-box-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--cream2);flex-shrink:0;}
+.table-box-head h3{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--navy);font-weight:600;}
+.search-box{display:flex;align-items:center;gap:6px;background:var(--cream);border:1.5px solid var(--cream2);border-radius:7px;padding:5px 10px;}
+.search-box input{border:none;background:transparent;outline:none;font-size:12px;color:var(--text);font-family:'Outfit',sans-serif;width:160px;}
+.table-scroll{flex:1;overflow-y:auto;}
+table{width:100%;border-collapse:collapse;}
+th{background:var(--navy2);color:rgba(255,255,255,0.7);padding:9px 12px;font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:600;text-align:left;position:sticky;top:0;z-index:1;}
+td{padding:9px 12px;border-bottom:1px solid #f3f0ea;font-size:12px;vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:var(--goldpale);}
+td strong{color:var(--navy);font-weight:600;}
+td small{font-size:10.5px;color:var(--muted);}
+.empty-row{text-align:center;color:var(--muted);padding:24px!important;font-size:12px;}
+
+/* BADGES */
+.badge{display:inline-flex;padding:2px 8px;border-radius:99px;font-size:10px;font-weight:600;}
+.b-blue{background:var(--bluel);color:var(--blue);}
+.b-red{background:var(--redl);color:var(--red);}
+.b-green{background:var(--greenl);color:var(--green);}
+.b-gold{background:var(--goldpale);color:#92400e;}
+.b-gray{background:var(--cream2);color:var(--muted);}
+
+/* ALERTS */
+.alert-full{border-radius:8px;padding:10px 14px;margin-bottom:8px;font-size:13px;line-height:1.5;border:1px solid;}
+.a-danger{background:var(--redl);border-color:#fecaca;color:var(--red);}
+.a-warn{background:var(--orangel);border-color:#fed7aa;color:#9a3412;}
+.a-success{background:var(--greenl);border-color:#bbf7d0;color:var(--green);}
+.a-info{background:var(--bluel);border-color:#bfdbfe;color:var(--blue);}
+
+/* GERADOR */
+.gerador-layout{flex:1;display:grid;grid-template-columns:300px 1fr;gap:12px;min-height:0;}
+.doc-preview{background:var(--white);border-radius:var(--r);padding:28px 32px;box-shadow:var(--shadow);border:1px solid var(--cream2);font-family:'Cormorant Garamond',serif;font-size:14px;line-height:1.85;white-space:pre-wrap;color:var(--text);overflow-y:auto;position:relative;}
+.doc-preview::before{content:'DOCUMENTO';position:absolute;top:12px;right:12px;font-family:'Outfit',sans-serif;font-size:8px;letter-spacing:.14em;color:var(--gold);font-weight:700;opacity:.5;}
+
+/* FINANCEIRO */
+.fin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;flex-shrink:0;}
+.fin-stat{background:var(--white);border-radius:var(--r);padding:12px 14px;border:1px solid var(--cream2);box-shadow:var(--shadow);}
+.fin-stat-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);}
+.fin-stat-value{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--navy);margin-top:4px;}
+
+/* RELATÓRIOS */
+.rel-actions{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0;}
+.rel-stats{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.rel-stat{background:var(--white);border-radius:8px;padding:10px 14px;border:1px solid var(--cream2);}
+.rel-stat span{font-size:10px;color:var(--muted);display:block;}
+.rel-stat strong{font-size:18px;font-family:'Cormorant Garamond',serif;color:var(--navy);}
+
+/* TOAST */
+#toast{position:fixed;bottom:20px;right:20px;background:var(--navy);color:#fff;padding:11px 16px;border-radius:9px;font-size:12.5px;box-shadow:0 8px 32px rgba(13,27,46,0.25);transform:translateY(70px);opacity:0;transition:all .26s cubic-bezier(.34,1.56,.64,1);z-index:9999;border-left:3px solid var(--gold);max-width:280px;}
+#toast.show{transform:translateY(0);opacity:1;}
+
+/* PRINT */
+@media print{body *{visibility:hidden;}#documentoGerado,#documentoGerado *{visibility:visible;}#documentoGerado{position:fixed;left:0;top:0;width:100%;padding:50px;font-size:13px;}}
+
+.nivel-sel{border:1.5px solid var(--cream2);border-radius:6px;padding:4px 8px;font-size:11px;font-family:'Outfit',sans-serif;background:var(--cream);cursor:pointer;}
+.nivel-sel:focus{outline:none;border-color:var(--gold);}
+.perm-card{border-radius:8px;padding:11px 13px;margin-bottom:8px;border:1px solid;}
+.perm-gold{background:var(--goldpale);border-color:rgba(201,162,74,0.3);}
+.perm-blue{background:var(--bluel);border-color:#bfdbfe;}
+.perm-gray{background:var(--cream2);border-color:#d1d5db;}
+.perm-title{margin-bottom:5px;}
+.perm-card p{font-size:11.5px;color:var(--muted);line-height:1.5;}
+
+.login-card .fgroup label{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;display:block;}
+.login-card .fgroup input{width:100%;border:1.5px solid var(--cream2);border-radius:8px;padding:11px 14px;font-size:14px;font-family:'Outfit',sans-serif;background:var(--cream);color:var(--text);transition:border-color .18s;}
+.login-card .fgroup input:focus{outline:none;border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(201,162,74,0.08);}
+
+/* DOC TABS */
+.doc-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;flex-shrink:0;}
+.doc-tab{padding:8px 14px;border:1.5px solid var(--cream2);border-radius:8px;background:var(--white);color:var(--muted);font-family:'Outfit',sans-serif;font-size:12.5px;font-weight:500;cursor:pointer;transition:all .15s;}
+.doc-tab:hover{border-color:var(--gold);color:var(--gold);}
+.doc-tab.active{background:var(--navy);color:var(--gold);border-color:var(--navy);font-weight:600;}
+.doc-aba{display:none;flex:1;flex-direction:column;gap:0;}
+.doc-aba.active{display:flex;flex-direction:column;flex:1;}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-wrap" id="loginScreen">
+  <div class="login-lines"></div>
+  <div class="login-card">
+    <div style="text-align:center;margin-bottom:24px;">
+      <div style="font-family:'Cormorant Garamond',serif;line-height:1;">
+        <div style="font-size:32px;font-weight:700;color:#c9a24a;letter-spacing:3px;">MOREIRA <span style="color:#0d1b2e">&amp;</span> ROCHA</div>
+        <div style="font-size:11px;color:#6b7280;letter-spacing:10px;text-transform:uppercase;margin-top:5px;">Advogados Associados</div>
+        <div style="width:60px;height:1px;background:linear-gradient(90deg,transparent,#c9a24a,transparent);margin:10px auto 0;"></div>
+      </div>
+    </div>
+    <h2>Acesso ao Sistema</h2>
+    <p class="sub">Área restrita. Insira suas credenciais para continuar.</p>
+    <div id="loginErro" style="display:none;background:#fee2e2;border:1px solid #fecaca;color:#991b1b;border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:14px;"></div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
+      <div class="fgroup">
+        <label>E-mail</label>
+        <input id="loginEmail" type="email" placeholder="seu@email.com" autocomplete="email"/>
+      </div>
+      <div class="fgroup">
+        <label>Senha</label>
+        <div style="position:relative;">
+          <input id="loginSenha" type="password" placeholder="••••••••" autocomplete="current-password" style="width:100%;padding-right:40px;"/>
+          <button type="button" onclick="toggleSenha()" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:16px;" id="btnVerSenha">👁</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="fazerLogin()" style="width:100%;padding:13px;font-size:14px;margin-bottom:12px;">Entrar</button>
+    <div style="text-align:center;">
+      <button class="btn btn-ghost" onclick="abrirEsqueceuSenha()" style="font-size:12px;color:var(--muted);text-decoration:underline;">Esqueceu a senha?</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ESQUECEU SENHA -->
+<div id="modalEsqueceuSenha" style="display:none;position:fixed;inset:0;background:rgba(13,27,46,0.6);z-index:500;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);">
+  <div style="background:#fff;border-radius:20px;padding:36px;width:min(420px,100%);box-shadow:0 20px 60px rgba(13,27,46,0.25);">
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--navy);margin-bottom:8px;">Redefinir senha</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5;">Informe o e-mail cadastrado. Se ele existir no sistema, você receberá um link para redefinir sua senha.</p>
+    <div id="resetErro" style="display:none;background:#fee2e2;border:1px solid #fecaca;color:#991b1b;border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:12px;"></div>
+    <div id="resetOk" style="display:none;background:#dcfce7;border:1px solid #bbf7d0;color:#14532d;border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:12px;"></div>
+    <div class="fgroup" style="margin-bottom:16px;">
+      <label>E-mail cadastrado</label>
+      <input id="resetEmail" type="email" placeholder="seu@email.com"/>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn btn-primary" onclick="enviarResetSenha()" style="flex:1">Enviar link</button>
+      <button class="btn btn-outline" onclick="fecharEsqueceuSenha()" style="flex:1">Cancelar</button>
+    </div>
+    <p style="font-size:11px;color:var(--muted);margin-top:14px;text-align:center;">O link de redefinição será enviado para o e-mail cadastrado e expira em 1 hora.</p>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div style="width:34px;height:34px;flex-shrink:0;border-radius:50%;border:1.5px solid #c9a24a;display:flex;align-items:center;justify-content:center;">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;color:#c9a24a;">MR</span>
+      </div>
+      <div class="sidebar-logo-text">
+        <h1 style="font-size:14px;letter-spacing:1px;">Moreira &amp; Rocha</h1>
+        <p style="letter-spacing:3px;font-size:9px;">ADVOGADOS ASSOCIADOS</p>
+      </div>
+    </div>
+    <div class="sidebar-user">
+      <span class="sidebar-user-name" id="usuarioNome">Usuário</span>
+      <span class="sidebar-user-role" id="usuarioPerfil">Perfil</span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group-label">Visão Geral</div>
+      <button class="nav-btn active" data-tela="dashboard" onclick="ir('dashboard',this)"><span class="nav-icon">📊</span><span class="nav-label-txt">Painel</span></button>
+      <div class="nav-group-label">Gestão</div>
+      <button class="nav-btn" data-tela="clientes" onclick="ir('clientes',this)"><span class="nav-icon">👥</span><span class="nav-label-txt">Clientes</span></button>
+      <button class="nav-btn" data-tela="processos" onclick="ir('processos',this)"><span class="nav-icon">⚖️</span><span class="nav-label-txt">Processos</span></button>
+      <button class="nav-btn" data-tela="tarefas" onclick="ir('tarefas',this)"><span class="nav-icon">✅</span><span class="nav-label-txt">Tarefas</span></button>
+      <button class="nav-btn" data-tela="agenda" onclick="ir('agenda',this)"><span class="nav-icon">📅</span><span class="nav-label-txt">Agenda &amp; Prazos</span></button>
+      <div class="nav-group-label">Documentação</div>
+      <button class="nav-btn" data-tela="documentos" onclick="ir('documentos',this)"><span class="nav-icon">📁</span><span class="nav-label-txt">Drive &amp; Arquivos</span></button>
+      <button class="nav-btn" data-tela="gerador" onclick="ir('gerador',this)"><span class="nav-icon">📝</span><span class="nav-label-txt">Gerador de Docs</span></button>
+      <div class="nav-group-label">Controle</div>
+      <button class="nav-btn" data-tela="alertas" onclick="ir('alertas',this)"><span class="nav-icon">🔔</span><span class="nav-label-txt">Alertas</span></button>
+      <button class="nav-btn" data-tela="relatorios" onclick="ir('relatorios',this)"><span class="nav-icon">📈</span><span class="nav-label-txt">Relatórios</span></button>
+      <button class="nav-btn" data-permissao="financeiro" data-tela="financeiro" onclick="ir('financeiro',this)"><span class="nav-icon">💰</span><span class="nav-label-txt">Financeiro</span></button>
+      <button class="nav-btn" data-permissao="usuarios" data-tela="usuarios" onclick="ir('usuarios',this)"><span class="nav-icon">🔐</span><span class="nav-label-txt">Usuários</span></button>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="btn btn-ghost" onclick="sair()" style="width:100%;justify-content:center;">← Sair</button>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <div class="content-area">
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <h2 id="tituloTela">Painel</h2>
+        <p id="subtituloTela">Visão geral do escritório</p>
+      </div>
+      <div class="topbar-right">
+        <button class="btn btn-outline btn-sm" onclick="sincronizarDrive()">☁ Drive</button>
+        <button class="btn btn-gold btn-sm" onclick="salvarDados()">💾 Salvar</button>
+      </div>
+    </div>
+
+    <!-- MAIN SCROLL -->
+    <div class="main-scroll">
+
+      <!-- DASHBOARD -->
+      <div class="section active-section" id="dashboard">
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-label">Clientes</div><div class="stat-value" id="totalClientes">0</div><div class="stat-sub">cadastrados</div></div>
+          <div class="stat-card"><div class="stat-label">Processos</div><div class="stat-value" id="totalProcessos">0</div><div class="stat-sub">registrados</div></div>
+          <div class="stat-card"><div class="stat-label">Tarefas</div><div class="stat-value" id="totalTarefas">0</div><div class="stat-sub">em aberto</div></div>
+          <div class="stat-card"><div class="stat-label">Alertas</div><div class="stat-value" id="totalAlertas">0</div><div class="stat-sub">ativos</div></div>
+        </div>
+        <div class="dash-body">
+          <div class="dash-card"><h3>📅 Próximos Compromissos</h3><div class="dash-card-body" id="agResume"></div></div>
+          <div class="dash-card"><h3>🔔 Alertas Importantes</h3><div class="dash-card-body" id="alResume"></div></div>
+          <div class="dash-card"><h3>📆 Google Agenda</h3><div class="dash-card-body" id="calBox" style="display:flex;flex-direction:column;"></div></div>
+          <div class="dash-card"><h3>💰 Resumo Financeiro</h3><div class="dash-card-body" id="dashFin"></div></div>
+        </div>
+      </div>
+
+      <!-- CLIENTES -->
+      <div class="section" id="clientes">
+        <div class="two-panel">
+          <div class="panel-left">
+            <div class="form-box">
+              <h3>Novo Cliente</h3>
+              <form class="fg" onsubmit="addCliente(event)">
+                <div class="fgroup full"><label>Nome *</label><input id="cNome" required placeholder="Nome completo"/></div>
+                <div class="fgroup"><label>CPF/CNPJ</label><input id="cDoc" placeholder="000.000.000-00"/></div>
+                <div class="fgroup"><label>RG</label><input id="cRG" placeholder="MG-00.000.000"/></div>
+                <div class="fgroup"><label>Telefone</label><input id="cTel" placeholder="(00) 00000-0000"/></div>
+                <div class="fgroup"><label>E-mail</label><input id="cEmail" type="email" placeholder="email@exemplo.com"/></div>
+                <div class="fgroup full"><label>Endereço</label><input id="cEnder" placeholder="Rua, nº, bairro, cidade — UF"/></div>
+                <div class="fgroup full"><label>Estado Civil / Profissão</label><input id="cQual" placeholder="Ex.: casado(a), servidor"/></div>
+                <div class="fgroup"><label>Natureza</label>
+                  <select id="cNat"><option>Cível</option><option>Penal</option><option>Trabalhista</option><option>Previdenciário</option><option>Consumidor</option><option>Ambiental</option><option>Administrativo</option><option>Família</option><option>Outro</option></select>
+                </div>
+                <div class="fgroup"><label>Tipo de Ação</label><input id="cAcao" placeholder="Ex.: Alimentos"/></div>
+                <div class="fgroup"><label>Ano</label><input id="cAno" type="number" placeholder="2025"/></div>
+                <div class="fgroup full"><button class="btn btn-primary" type="submit" style="width:100%">+ Cadastrar</button></div>
+              </form>
+            </div>
+            <div class="form-box">
+              <h3>Documento do Cliente</h3>
+              <form class="fg1" onsubmit="addDocCliente(event)">
+                <div class="fgroup"><label>Cliente</label><select id="dcCliente" required></select></div>
+                <div class="fgroup"><label>Tipo</label>
+                  <select id="dcTipo"><option>RG</option><option>CPF</option><option>Comprovante de endereço</option><option>Carteira de trabalho</option><option>CNIS</option><option>Procuração assinada</option><option>Declaração de hipossuficiência</option><option>Documento médico</option><option>Prova</option><option>Outro</option></select>
+                </div>
+                <div class="fgroup"><label>Descrição</label><input id="dcDesc" placeholder="Ex.: RG frente e verso"/></div>
+                <div class="fgroup"><label>Arquivo</label><input id="dcArq" type="file"/></div>
+                <button class="btn btn-primary" type="submit" style="width:100%;margin-top:4px">📎 Registrar</button>
+              </form>
+            </div>
+          </div>
+          <div class="panel-right" style="display:flex;flex-direction:column;gap:10px;">
+            <div class="table-box">
+              <div class="table-box-head"><h3>Clientes</h3><div class="search-box">🔍<input placeholder="Buscar..." oninput="filtrar('tabelaClientes',this.value)"/></div></div>
+              <div class="table-scroll"><table id="tabelaClientes"><thead><tr><th>Cliente</th><th>CPF · RG</th><th>Natureza</th><th>Contato</th><th>Drive</th><th></th></tr></thead><tbody></tbody></table></div>
+            </div>
+            <div class="table-box">
+              <div class="table-box-head"><h3>Documentos por Cliente</h3></div>
+              <div class="table-scroll"><table id="tabelaDocsCliente"><thead><tr><th>Cliente</th><th>Tipo</th><th>Descrição</th><th>Arquivo</th><th>Drive</th><th></th></tr></thead><tbody></tbody></table></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROCESSOS -->
+      <div class="section" id="processos">
+        <div class="two-panel">
+          <div class="panel-left">
+            <div class="form-box">
+              <h3>Novo Processo</h3>
+              <form class="fg" onsubmit="addProcesso(event)">
+                <div class="fgroup full"><label>Número *</label><input id="pNum" required placeholder="0000000-00.0000.0.00.0000"/></div>
+                <div class="fgroup full"><label>Cliente *</label><select id="pCliente" required></select></div>
+                <div class="fgroup full"><label>Parte Contrária</label><input id="pParte" placeholder="Nome da parte adversa"/></div>
+                <div class="fgroup full"><label>Vara / Órgão</label><input id="pOrgao" placeholder="Ex.: 2ª Vara Cível"/></div>
+                <div class="fgroup"><label>Área</label>
+                  <select id="pArea"><option>Cível</option><option>Penal</option><option>Trabalhista</option><option>Previdenciário</option><option>Consumidor</option><option>Ambiental</option><option>Administrativo</option><option>Família</option><option>Outro</option></select>
+                </div>
+                <div class="fgroup"><label>Status</label>
+                  <select id="pStatus"><option>Em andamento</option><option>Urgente</option><option>Concluído</option><option>Suspenso</option></select>
+                </div>
+                <div class="fgroup full"><label>Resumo</label><textarea id="pResumo" placeholder="Breve descrição..."></textarea></div>
+                <div class="fgroup full"><button class="btn btn-primary" type="submit" style="width:100%">+ Cadastrar</button></div>
+              </form>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="table-box">
+              <div class="table-box-head"><h3>Processos</h3><div class="search-box">🔍<input placeholder="Buscar..." oninput="filtrar('tabelaProcessos',this.value)"/></div></div>
+              <div class="table-scroll"><table id="tabelaProcessos"><thead><tr><th>Número</th><th>Cliente</th><th>Parte Contrária</th><th>Área</th><th>Órgão</th><th>Status</th><th></th></tr></thead><tbody></tbody></table></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAREFAS -->
+      <div class="section" id="tarefas">
+        <div class="two-panel">
+          <div class="panel-left">
+            <div class="form-box">
+              <h3>Nova Tarefa</h3>
+              <form class="fg" onsubmit="addTarefa(event)">
+                <div class="fgroup full"><label>Descrição *</label><input id="tTitulo" required placeholder="O que fazer?"/></div>
+                <div class="fgroup full"><label>Responsável</label><select id="tResp"></select></div>
+                <div class="fgroup"><label>Prazo *</label><input id="tData" type="date" required/></div>
+                <div class="fgroup"><label>Prioridade</label><select id="tPrio"><option>Normal</option><option>Urgente</option><option>Baixa</option></select></div>
+                <div class="fgroup"><label>Status</label><select id="tStatus"><option>Aberta</option><option>Em andamento</option><option>Concluída</option></select></div>
+                <div class="fgroup"><label>Processo</label><select id="tProc"></select></div>
+                <div class="fgroup full"><button class="btn btn-primary" type="submit" style="width:100%">+ Criar Tarefa</button></div>
+              </form>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="table-box">
+              <div class="table-box-head"><h3>Tarefas</h3></div>
+              <div class="table-scroll"><table id="tabelaTarefas"><thead><tr><th>Tarefa</th><th>Responsável</th><th>Prazo</th><th>Prioridade</th><th>Status</th><th></th></tr></thead><tbody></tbody></table></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AGENDA -->
+      <div class="section" id="agenda">
+        <div class="two-panel">
+          <div class="panel-left">
+            <div class="form-box">
+              <h3>Novo Compromisso</h3>
+              <form class="fg" onsubmit="addAgenda(event)">
+                <div class="fgroup full"><label>Compromisso *</label><input id="aTitulo" required placeholder="Descreva o compromisso"/></div>
+                <div class="fgroup"><label>Data *</label><input id="aData" type="date" required/></div>
+                <div class="fgroup"><label>Horário</label><input id="aHora" type="time"/></div>
+                <div class="fgroup full"><label>Tipo</label><select id="aTipo"><option>Prazo processual</option><option>Audiência</option><option>Reunião</option><option>Atendimento</option><option>Outro</option></select></div>
+                <div class="fgroup full"><label>Responsável</label><select id="aResp"></select></div>
+                <div class="fgroup full"><label>Processo</label><select id="aProc"></select></div>
+                <div class="fgroup full"><button class="btn btn-primary" type="submit" style="width:100%">+ Cadastrar</button></div>
+              </form>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="table-box">
+              <div class="table-box-head"><h3>Agenda &amp; Prazos</h3></div>
+              <div class="table-scroll"><table id="tabelaAgenda"><thead><tr><th>Data</th><th>Hora</th><th>Tipo</th><th>Compromisso</th><th>Responsável</th><th></th></tr></thead><tbody></tbody></table></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOCUMENTOS -->
+      <div class="section" id="documentos">
+        <div class="two-panel">
+          <div class="panel-left">
+            <div class="form-box">
+              <h3>Registrar Documento</h3>
+              <div style="margin-bottom:6px"><button class="btn btn-outline btn-sm" onclick="autorizarDrive()">🔗 Autorizar Drive (moreiraerochaadv@gmail.com)</button></div><div class="alert a-gold" style="margin-bottom:10px;font-size:11px;padding:8px 12px;">⚠️ Selecione sempre <strong>moreiraerochaadv@gmail.com</strong> ao autorizar.</div>
+              <form class="fg1" onsubmit="addDoc(event)">
+                <div class="fgroup"><label>Nome *</label><input id="dNome" required placeholder="Nome do arquivo"/></div>
+                <div class="fgroup"><label>Tipo</label>
+                  <select id="dTipo"><option>Procuração</option><option>Contrato</option><option>Documento pessoal</option><option>Petição</option><option>Prova</option><option>Laudo</option><option>Certidão</option><option>Outro</option></select>
+                </div>
+                <div class="fgroup"><label>Cliente</label><select id="dCliente"></select></div>
+                <div class="fgroup"><label>Processo</label><select id="dProcesso"></select></div>
+                <div class="fgroup"><label>Arquivo</label><input id="dArq" type="file"/></div>
+                <button class="btn btn-primary" type="submit" style="width:100%;margin-top:4px">📤 Enviar ao Drive</button>
+              </form>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="table-box">
+              <div class="table-box-head"><h3>Documentos</h3></div>
+              <div class="table-scroll"><table id="tabelaDocs"><thead><tr><th>Documento</th><th>Tipo</th><th>Cliente</th><th>Arquivo</th><th>Drive</th><th></th></tr></thead><tbody></tbody></table></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALERTAS -->
+      <div class="section" id="alertas">
+        <div class="table-box" style="flex:1">
+          <div class="table-box-head"><h3>🔔 Alertas do Sistema</h3></div>
+          <div style="padding:14px;overflow-y:auto;flex:1" id="alertasTela"></div>
+        </div>
+      </div>
+
+      <!-- RELATÓRIOS -->
+      <div class="section" id="relatorios">
+        <div class="rel-actions">
+          <button class="btn btn-primary" onclick="relClientes()">👥 Clientes</button>
+          <button class="btn btn-primary" onclick="relProcessos()">⚖️ Processos</button>
+          <button class="btn btn-primary" onclick="relFinanceiro()">💰 Financeiro</button>
+          <button class="btn btn-outline" onclick="exportCSV()">⬇ CSV</button>
+          <button class="btn btn-outline" onclick="window.print()">🖨 Imprimir</button>
+        </div>
+        <div class="table-box" style="flex:1">
+          <div class="table-scroll" style="padding:14px" id="relConteudo"></div>
+        </div>
+      </div>
+
+      <!-- FINANCEIRO -->
+      <div class="section" id="financeiro">
+        <div id="avisoFin" class="alert-full a-danger" style="display:none">Sem permissão para acessar o módulo financeiro.</div>
+        <div id="contFin" style="display:none;flex-direction:column;gap:12px;flex:1">
+          <div class="fin-stats">
+            <div class="fin-stat"><div class="fin-stat-label">Total</div><div class="fin-stat-value" id="fTotal">R$ 0</div></div>
+            <div class="fin-stat"><div class="fin-stat-label">Recebido</div><div class="fin-stat-value" id="fRec" style="color:var(--green)">R$ 0</div></div>
+            <div class="fin-stat"><div class="fin-stat-label">Em Aberto</div><div class="fin-stat-value" id="fAb">R$ 0</div></div>
+            <div class="fin-stat"><div class="fin-stat-label">Em Atraso</div><div class="fin-stat-value" id="fAt" style="color:var(--red)">R$ 0</div></div>
+          </div>
+          <div class="two-panel" style="flex:1">
+            <div class="panel-left">
+              <div class="form-box">
+                <h3>Novo Lançamento</h3>
+                <form class="fg1" onsubmit="addFin(event)">
+                  <div class="fgroup"><label>Cliente *</label><select id="fCliente" required></select></div>
+                  <div class="fgroup"><label>Descrição *</label><input id="fDesc" required placeholder="Ex.: Honorários"/></div>
+                  <div class="fgroup"><label>Valor (R$) *</label><input id="fValor" type="number" min="0" step="0.01" required/></div>
+                  <div class="fgroup"><label>Tipo</label><select id="fTipo"><option>Honorários</option><option>Custas</option><option>Despesa</option><option>Reembolso</option><option>Êxito</option></select></div>
+                  <div class="fgroup"><label>Situação</label><select id="fSit"><option>Previsto</option><option>Recebido</option><option>Pago</option><option>Em atraso</option></select></div>
+                  <div class="fgroup"><label>Vencimento</label><input id="fVenc" type="date"/></div>
+                  <button class="btn btn-primary" type="submit" style="width:100%;margin-top:4px">+ Registrar</button>
+                </form>
+              </div>
+            </div>
+            <div class="panel-right">
+              <div class="table-box">
+                <div class="table-box-head"><h3>Lançamentos</h3></div>
+                <div class="table-scroll"><table id="tabelaFin"><thead><tr><th>Cliente</th><th>Descrição</th><th>Tipo</th><th>Valor</th><th>Situação</th><th>Vencimento</th><th></th></tr></thead><tbody></tbody></table></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GERADOR -->
+      <div class="section" id="gerador">
+        <!-- ABAS DE CATEGORIA -->
+        <div class="doc-tabs">
+          <button class="doc-tab active" onclick="mudarAbaDoc('procuracoes',this)">📜 Procurações</button>
+          <button class="doc-tab" onclick="mudarAbaDoc('contratos',this)">📋 Contratos</button>
+          <button class="doc-tab" onclick="mudarAbaDoc('declaracoes',this)">📄 Declarações</button>
+          <button class="doc-tab" onclick="mudarAbaDoc('substabelecimento',this)">🔄 Substabelecimento</button>
+          <button class="doc-tab" onclick="mudarAbaDoc('notificacoes',this)">📨 Notificações</button>
+        </div>
+
+        <!-- PROCURAÇÕES -->
+        <div class="doc-aba active" id="aba-procuracoes" style="display:flex;flex-direction:column;">
+          <div class="gerador-layout">
+            <div class="panel-left">
+              <div class="form-box">
+                <h3>📜 Procuração</h3>
+                <div class="fg1">
+                  <div class="fgroup"><label>Tipo de Procuração</label>
+                    <select id="gTipoProcuracao">
+                      <option value="Procuração ad judicia">Ad Judicia (judicial)</option>
+                      <option value="Procuração especial extrajudicial">Especial Extrajudicial</option>
+                    </select>
+                  </div>
+                  <div class="fgroup"><label>Cliente *</label><select id="gClienteProcuracao" required></select></div>
+                  <div class="fgroup"><label>Objeto / Finalidade</label><input id="gObjetoProcuracao" placeholder="Ex.: ação trabalhista, processo nº..."/></div>
+                  <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+                    <button class="btn btn-primary" type="button" onclick="gerarDocAba('procuracao')">⚡ Visualizar</button>
+                    <button class="btn btn-gold" type="button" onclick="baixarDocAba('procuracao')">⬇️ Baixar Word</button>
+                    
+                    <button class="btn btn-outline" type="button" onclick="copiarDocAba()">📋 Copiar</button>
+                    <button class="btn btn-outline" type="button" onclick="window.print()">🖨 Imprimir</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-preview" id="previewProcuracao">Preencha os campos e clique em <strong>⚡ Visualizar</strong>.</div>
+          </div>
+        </div>
+
+        <!-- CONTRATOS -->
+        <div class="doc-aba" id="aba-contratos">
+          <div class="gerador-layout">
+            <div class="panel-left">
+              <div class="form-box">
+                <h3>📋 Contrato de Honorários</h3>
+                <div class="fg1">
+                  <div class="fgroup"><label>Cliente *</label><select id="gClienteContrato" required></select></div>
+                  <div class="fgroup"><label>Objeto / Tipo de ação</label><input id="gObjetoContrato" placeholder="Ex.: Alimentos e Guarda, Reclamação Trabalhista"/></div>
+                  <div class="fgroup"><label>Valor dos Honorários</label><input id="gValorContrato" placeholder="Ex.: R$ 3.000,00 em 10x de R$ 300,00"/></div>
+                  <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+                    <button class="btn btn-primary" type="button" onclick="gerarDocAba('contrato')">⚡ Visualizar</button>
+                    <button class="btn btn-gold" type="button" onclick="baixarDocAba('contrato')">⬇️ Baixar Word</button>
+                    
+                    <button class="btn btn-outline" type="button" onclick="copiarDocAba()">📋 Copiar</button>
+                    <button class="btn btn-outline" type="button" onclick="window.print()">🖨 Imprimir</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-preview" id="previewContrato">Preencha os campos e clique em <strong>⚡ Visualizar</strong>.</div>
+          </div>
+        </div>
+
+        <!-- DECLARAÇÕES -->
+        <div class="doc-aba" id="aba-declaracoes">
+          <div class="gerador-layout">
+            <div class="panel-left">
+              <div class="form-box">
+                <h3>📄 Declaração de Hipossuficiência</h3>
+                <div class="fg1">
+                  <div class="fgroup"><label>Cliente *</label><select id="gClienteDeclaracao" required></select></div>
+                  <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+                    <button class="btn btn-primary" type="button" onclick="gerarDocAba('declaracao')">⚡ Visualizar</button>
+                    <button class="btn btn-gold" type="button" onclick="baixarDocAba('declaracao')">⬇️ Baixar Word</button>
+                    
+                    <button class="btn btn-outline" type="button" onclick="copiarDocAba()">📋 Copiar</button>
+                    <button class="btn btn-outline" type="button" onclick="window.print()">🖨 Imprimir</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-preview" id="previewDeclaracao">Preencha os campos e clique em <strong>⚡ Visualizar</strong>.</div>
+          </div>
+        </div>
+
+        <!-- SUBSTABELECIMENTO -->
+        <div class="doc-aba" id="aba-substabelecimento">
+          <div class="gerador-layout">
+            <div class="panel-left">
+              <div class="form-box">
+                <h3>🔄 Substabelecimento</h3>
+                <div class="fg1">
+                  <div class="fgroup"><label>Cliente *</label><select id="gClienteSubst" required></select></div>
+                  <div class="fgroup"><label>Advogado Substabelecido</label><input id="gSubNome" placeholder="Nome completo"/></div>
+                  <div class="fgroup"><label>OAB do Substabelecido</label><input id="gSubOab" placeholder="OAB/MG 000.000"/></div>
+                  <div class="fgroup"><label>Tipo</label>
+                    <select id="gSubReserva">
+                      <option>Com reserva de poderes</option>
+                      <option>Sem reserva de poderes</option>
+                    </select>
+                  </div>
+                  <div class="fgroup"><label>Substabelecente</label><input id="gSubEnte" placeholder="Quem substabelece"/></div>
+                  <div class="fgroup"><label>Objeto / Processo</label><input id="gObjetoSubst" placeholder="Ex.: ação trabalhista"/></div>
+                  <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+                    <button class="btn btn-primary" type="button" onclick="gerarDocAba('substabelecimento')">⚡ Visualizar</button>
+                    <button class="btn btn-gold" type="button" onclick="baixarDocAba('substabelecimento')">⬇️ Baixar Word</button>
+                    
+                    <button class="btn btn-outline" type="button" onclick="copiarDocAba()">📋 Copiar</button>
+                    <button class="btn btn-outline" type="button" onclick="window.print()">🖨 Imprimir</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-preview" id="previewSubstabelecimento">Preencha os campos e clique em <strong>⚡ Visualizar</strong>.</div>
+          </div>
+        </div>
+
+        <!-- NOTIFICAÇÕES -->
+        <div class="doc-aba" id="aba-notificacoes">
+          <div class="gerador-layout">
+            <div class="panel-left">
+              <div class="form-box">
+                <h3>📨 Notificação Extrajudicial</h3>
+                <div class="fg1">
+                  <div class="fgroup"><label>Cliente (Notificante) *</label><select id="gClienteNotif" required></select></div>
+                  <div class="fgroup"><label>Notificado(a)</label><input id="gNotifNome" placeholder="Nome e qualificação do notificado"/></div>
+                  <div class="fgroup"><label>Objeto da Notificação</label><input id="gObjetoNotif" placeholder="Ex.: cobrança de débito, rescisão contratual"/></div>
+                  <div class="fgroup"><label>Prazo para resposta (dias)</label><input id="gNotifPrazo" type="number" placeholder="10"/></div>
+                  <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+                    <button class="btn btn-primary" type="button" onclick="gerarDocAba('notificacao')">⚡ Visualizar</button>
+                    <button class="btn btn-gold" type="button" onclick="baixarDocAba('notificacao')">⬇️ Baixar Word</button>
+                    
+                    <button class="btn btn-outline" type="button" onclick="copiarDocAba()">📋 Copiar</button>
+                    <button class="btn btn-outline" type="button" onclick="window.print()">🖨 Imprimir</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-preview" id="previewNotificacao">Preencha os campos e clique em <strong>⚡ Visualizar</strong>.</div>
+          </div>
+        </div>
+      </div>
+
+<!-- USUÁRIOS -->
+      <div class="section" id="usuarios">
+        <div id="avisoUsers" class="alert-full a-danger" style="display:none">Apenas responsáveis legais podem acessar esta seção.</div>
+        <div id="contUsers" style="display:none;flex-direction:column;gap:12px;flex:1">
+          <div class="two-panel" style="flex:1">
+            <div class="panel-left">
+              <div class="form-box">
+                <h3>Novo Usuário</h3>
+                <form class="fg1" onsubmit="addUsuario(event)">
+                  <div class="fgroup"><label>Nome completo *</label><input id="uNome" required placeholder="Nome do advogado ou estagiário"/></div>
+                  <div class="fgroup"><label>E-mail *</label><input id="uEmail" type="email" required placeholder="email@exemplo.com"/></div>
+                  <div class="fgroup"><label>Senha *</label><input id="uSenha" type="password" required placeholder="Mínimo 6 caracteres"/></div>
+                  <div class="fgroup"><label>Nível de acesso *</label>
+                    <select id="uNivel">
+                      <option value="advogado">Advogado Associado</option>
+                      <option value="estagiario">Estagiário</option>
+                    </select>
+                  </div>
+                  <button class="btn btn-primary" type="submit" style="width:100%;margin-top:8px">+ Cadastrar Usuário</button>
+                </form>
+              </div>
+              <div class="form-box">
+                <h3>Níveis de Acesso</h3>
+                <div class="perm-card perm-gold">
+                  <div class="perm-title"><span class="badge b-gold">Responsável Legal</span></div>
+                  <p>Acesso total ao sistema incluindo financeiro e gerenciamento de usuários.</p>
+                </div>
+                <div class="perm-card perm-blue">
+                  <div class="perm-title"><span class="badge b-blue">Advogado Associado</span></div>
+                  <p>Clientes, processos, documentos, tarefas, agenda, alertas, relatórios e gerador. <strong>Sem acesso</strong> ao financeiro e usuários.</p>
+                </div>
+                <div class="perm-card perm-gray">
+                  <div class="perm-title"><span class="badge b-gray">Estagiário</span></div>
+                  <p>Acesso limitado: clientes, tarefas, agenda e gerador de documentos. <strong>Sem acesso</strong> a processos, financeiro, relatórios e usuários.</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel-right">
+              <div class="table-box">
+                <div class="table-box-head"><h3>Usuários Cadastrados</h3></div>
+                <div class="table-scroll">
+                  <table id="tabelaUsers">
+                    <thead><tr><th>Nome / E-mail</th><th>Alterar Nível</th><th>Nível Atual</th><th>Permissões</th><th>Status</th><th>Ações</th></tr></thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /main-scroll -->
+  </div><!-- /content-area -->
+</div><!-- /app -->
+
+<div id="toast"></div>
+<script>
+const GOOGLE_CLIENT_ID='743736546281-7offaqkgnmu1s1jnev22pum0it2rkpsk.apps.googleusercontent.com';
+const GOOGLE_API_KEY='AIzaSyDPDaJ7nHLbTQF9c5x3MNynVKVGXMU30ns';
+const GOOGLE_CALENDAR_EMBED_URL='https://calendar.google.com/calendar/embed?src=moreiraerochaadv%40gmail.com&ctz=America%2FSao_Paulo';
+const DRIVE_FOLDER_ID='1DQ0wLkBMaJTmV3aO7dBOYSAXiwIZ5Pj9';
+const GOOGLE_SHEETS_ID='12T3ycpwIcieK_1f_m6hEoImtR9kLYzwaD5V1KXAzotg';
+const PASTA_RAIZ='CLIENTES - MOREIRA & ROCHA';
+const CONTA_GOOGLE='moreiraerochaadv@gmail.com'; // Conta Google fixa para Drive, Agenda e APIs
+const DRIVE_SCOPES='https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/spreadsheets';
+let gToken=null, usuarioLogado=null;
+try{ usuarioLogado=JSON.parse(sessionStorage.getItem('uj')); }catch(e){}
+
+// Permissões por nível
+const PERMISSOES={
+  responsavel: ['dashboard','clientes','processos','tarefas','agenda','documentos','gerador','alertas','relatorios','financeiro','usuarios'],
+  advogado:    ['dashboard','clientes','processos','tarefas','agenda','documentos','gerador','alertas','relatorios'],
+  estagiario:  ['dashboard','clientes','tarefas','agenda','gerador','alertas']
+};
+
+const NIVEL_LABEL={
+  responsavel:'Responsável Legal',
+  advogado:'Advogado Associado',
+  estagiario:'Estagiário'
+};
+
+const DEF={
+  clientes:[],processos:[],documentos:[],tarefas:[],agenda:[],financeiro:[],
+  usuarios:[
+    {nome:'Moreira & Rocha Advogados Associados',email:'moreiraerochaadv@gmail.com',senha:'Direitodotrabalho2019*',nivel:'responsavel',ativo:true},
+    {nome:'Jurídico Moreira & Rocha',email:'juridico@moreiraerochaadv.com.br',senha:'Direitodotrabalho2019*',nivel:'responsavel',ativo:true}
+  ]
+};
+let E={...DEF};
+try{
+  const saved=JSON.parse(localStorage.getItem('mjv3'));
+  if(saved){
+    E={...DEF,...saved};
+    if(!E.usuarios||E.usuarios.length===0) E.usuarios=DEF.usuarios;
+    // Garante que os responsáveis padrão sempre têm senha definida
+    DEF.usuarios.forEach(function(du){
+      const eu=E.usuarios.find(function(u){ return u.email===du.email; });
+      if(eu&&!eu.senha) eu.senha=du.senha;
+    });
+  }
+}catch(ex){}
+
+let _tt;
+function toast(msg,tipo){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.style.borderLeftColor=tipo==='ok'?'#22c55e':tipo==='err'?'#ef4444':'var(--gold)';
+  t.classList.add('show');
+  clearTimeout(_tt);
+  _tt=setTimeout(function(){ t.classList.remove('show'); },3200);
+}
+
+// AUTH
+// Login com email e senha
+function toggleSenha(){
+  const inp=document.getElementById('loginSenha');
+  const btn=document.getElementById('btnVerSenha');
+  if(inp.type==='password'){ inp.type='text'; btn.textContent='🙈'; }
+  else{ inp.type='password'; btn.textContent='👁'; }
+}
+
+function fazerLogin(){
+  const email=document.getElementById('loginEmail').value.trim().toLowerCase();
+  const senha=document.getElementById('loginSenha').value;
+  const erro=document.getElementById('loginErro');
+  erro.style.display='none';
+
+  if(!email||!senha){
+    erro.textContent='Preencha e-mail e senha.';
+    erro.style.display='block'; return;
+  }
+
+  const auth=E.usuarios.find(function(u){
+    return u.ativo!==false && u.email.toLowerCase()===email && u.senha===senha;
+  });
+
+  if(!auth){
+    erro.textContent='E-mail ou senha incorretos. Verifique e tente novamente.';
+    erro.style.display='block';
+    document.getElementById('loginSenha').value='';
+    return;
+  }
+
+  usuarioLogado={nome:auth.nome,email:auth.email,nivel:auth.nivel,loginGoogle:false};
+  sessionStorage.setItem('uj',JSON.stringify(usuarioLogado));
+  iniciar();
+}
+
+// Permitir Enter para logar
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('loginSenha').addEventListener('keydown',function(e){
+    if(e.key==='Enter') fazerLogin();
+  });
+  document.getElementById('loginEmail').addEventListener('keydown',function(e){
+    if(e.key==='Enter') document.getElementById('loginSenha').focus();
+  });
+});
+
+function abrirEsqueceuSenha(){
+  document.getElementById('resetEmail').value='';
+  document.getElementById('resetErro').style.display='none';
+  document.getElementById('resetOk').style.display='none';
+  document.getElementById('modalEsqueceuSenha').style.display='flex';
+}
+function fecharEsqueceuSenha(){
+  document.getElementById('modalEsqueceuSenha').style.display='none';
+}
+
+function enviarResetSenha(){
+  const email=document.getElementById('resetEmail').value.trim().toLowerCase();
+  const erro=document.getElementById('resetErro');
+  const ok=document.getElementById('resetOk');
+  erro.style.display='none'; ok.style.display='none';
+
+  if(!email){ erro.textContent='Informe o e-mail.'; erro.style.display='block'; return; }
+
+  const usuario=E.usuarios.find(function(u){ return u.email.toLowerCase()===email && u.ativo!==false; });
+
+  // Sempre mostra mensagem genérica por segurança (não revela se email existe)
+  ok.textContent='Se este e-mail estiver cadastrado no sistema, você receberá as instruções em breve. Verifique sua caixa de entrada e spam.';
+  ok.style.display='block';
+
+  if(usuario){
+    // Gera token simples e salva localmente
+    const token=Math.random().toString(36).slice(2)+Date.now().toString(36);
+    const expira=Date.now()+(60*60*1000); // 1 hora
+    const resets=JSON.parse(localStorage.getItem('pwdResets')||'{}');
+    resets[token]={email:email,expira:expira};
+    localStorage.setItem('pwdResets',JSON.stringify(resets));
+
+    // Como não temos backend, mostra o link direto para uso interno
+    const link=window.location.href.split('?')[0]+'?reset='+token;
+    console.log('Link de reset para '+email+':', link);
+    // Em produção com backend, aqui enviaria o email com o link
+    toast('Link de redefinição gerado. Verifique o console para uso interno.','ok');
+  }
+}
+
+// Verificar se há token de reset na URL ao carregar
+(function(){
+  const params=new URLSearchParams(window.location.search);
+  const token=params.get('reset');
+  if(!token) return;
+  const resets=JSON.parse(localStorage.getItem('pwdResets')||'{}');
+  const reset=resets[token];
+  if(!reset||Date.now()>reset.expira){
+    alert('Este link de redefinição expirou ou é inválido.'); return;
+  }
+  const novaSenha=prompt('Digite sua nova senha para '+reset.email+':');
+  if(!novaSenha||novaSenha.length<6){ alert('Senha deve ter no mínimo 6 caracteres.'); return; }
+  const confirma=prompt('Confirme a nova senha:');
+  if(novaSenha!==confirma){ alert('As senhas não coincidem.'); return; }
+  const idx=E.usuarios.findIndex(function(u){ return u.email.toLowerCase()===reset.email; });
+  if(idx>=0){
+    E.usuarios[idx].senha=novaSenha;
+    localStorage.setItem('mjv3',JSON.stringify(E));
+    delete resets[token];
+    localStorage.setItem('pwdResets',JSON.stringify(resets));
+    alert('Senha redefinida com sucesso! Faça login com sua nova senha.');
+    window.location.href=window.location.pathname;
+  }
+})();
+
+function sair(){
+  sessionStorage.removeItem('uj'); gToken=null; usuarioLogado=null;
+  document.getElementById('loginScreen').style.display='flex';
+  document.getElementById('app').style.display='none';
+}
+
+function pode(m){
+  if(!usuarioLogado) return false;
+  const perms=PERMISSOES[usuarioLogado.nivel]||[];
+  return perms.includes(m);
+}
+
+function iniciar(){
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('app').style.display='flex';
+  document.getElementById('usuarioNome').textContent=usuarioLogado.nome;
+  document.getElementById('usuarioPerfil').textContent=
+    NIVEL_LABEL[usuarioLogado.nivel]+(usuarioLogado.loginGoogle?' · Google':' · Demo');
+  // Esconde/bloqueia botões da nav sem permissão
+  document.querySelectorAll('.nav-btn[data-tela]').forEach(function(b){
+    if(!pode(b.dataset.tela)){
+      b.classList.add('locked');
+      b.title='Sem permissão';
+    }
+  });
+  render();
+}
+
+const subs={
+  dashboard:'Visão geral',clientes:'Gestão de clientes',processos:'Processos',
+  documentos:'Drive & Arquivos',tarefas:'Tarefas',agenda:'Agenda & Prazos',
+  alertas:'Alertas',relatorios:'Relatórios',financeiro:'Financeiro',
+  gerador:'Gerador de Documentos',usuarios:'Usuários & Permissões'
+};
+
+function ir(id,btn){
+  if(!pode(id)){ toast('Seu perfil não tem acesso a este módulo.','err'); return; }
+  document.querySelectorAll('.section').forEach(function(s){ s.style.display='none'; });
+  document.getElementById(id).style.display='flex';
+  document.querySelectorAll('.nav-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('tituloTela').textContent=btn.querySelector('.nav-label-txt').textContent;
+  document.getElementById('subtituloTela').textContent=subs[id]||'';
+  render();
+}
+
+function salvarDados(){
+  localStorage.setItem('mjv3',JSON.stringify(E));
+  toast('Dados salvos!','ok'); render();
+}
+
+function moeda(val){ return Number(val||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); }
+function hoje(){ return new Date().toISOString().slice(0,10); }
+function diasAte(d){ return Math.ceil((new Date(d)-new Date(hoje()))/(1000*60*60*24)); }
+function rem(tipo,i){ if(confirm('Remover?')){ E[tipo].splice(i,1); salvarDados(); } }
+
+function sb(s){
+  s=String(s||'').toLowerCase();
+  if(s.includes('urgente')||s.includes('atraso')||s.includes('vencido')) return 'b-red';
+  if(s.includes('conclu')||s.includes('recebido')||s.includes('pago')) return 'b-green';
+  if(s.includes('andamento')) return 'b-blue';
+  if(s.includes('suspenso')||s.includes('previsto')) return 'b-gray';
+  return 'b-gold';
+}
+
+function nivelBadge(n){
+  if(n==='responsavel') return 'b-gold';
+  if(n==='advogado') return 'b-blue';
+  return 'b-gray';
+}
+
+function opts(arr,lbl){
+  lbl=lbl||'Selecione';
+  return '<option value="">'+lbl+'</option>'+arr.map(function(x){ return '<option>'+x+'</option>'; }).join('');
+}
+
+function v(id){ return (document.getElementById(id)||{}).value||''; }
+function cpn(n){ return E.clientes.find(function(c){ return c.nome===n; })||{}; }
+function eid(id){ return document.getElementById(id); }
+
+// ── USUÁRIOS CRUD ──
+function addUsuario(e){
+  e.preventDefault();
+  renderizarSelectsGerador();
+
+  if(!pode('usuarios')){ toast('Sem permissão.','err'); return; }
+  const nome=v('uNome').trim();
+  const email=v('uEmail').trim().toLowerCase();
+  const senha=v('uSenha').trim();
+  const nivel=v('uNivel');
+  if(!nome||!email){ toast('Preencha nome e e-mail.','err'); return; }
+  if(!senha||senha.length<6){ toast('Senha deve ter no mínimo 6 caracteres.','err'); return; }
+  const existe=E.usuarios.find(function(u){ return u.email===email; });
+  if(existe){ toast('Este e-mail já está cadastrado.','err'); return; }
+  E.usuarios.push({nome:nome,email:email,senha:senha,nivel:nivel,ativo:true});
+  e.target.reset();
+  salvarDados();
+  toast('Usuário cadastrado!','ok');
+}
+
+function toggleUsuario(i){
+  if(!pode('usuarios')){ toast('Sem permissão.','err'); return; }
+  // Protege os 2 primeiros (responsáveis fixos)
+  if(i<2){ toast('Os responsáveis legais não podem ser desativados.','err'); return; }
+  E.usuarios[i].ativo=!E.usuarios[i].ativo;
+  salvarDados();
+}
+
+function remUsuario(i){
+  if(!pode('usuarios')){ toast('Sem permissão.','err'); return; }
+  if(i<2){ toast('Os responsáveis legais não podem ser removidos.','err'); return; }
+  if(confirm('Remover este usuário?')){ E.usuarios.splice(i,1); salvarDados(); }
+}
+
+function alterarNivel(i,novoNivel){
+  if(!pode('usuarios')){ toast('Sem permissão.','err'); return; }
+  if(i<2){ toast('O nível dos responsáveis não pode ser alterado.','err'); return; }
+  E.usuarios[i].nivel=novoNivel;
+  salvarDados();
+}
+
+// ── CRUD CLIENTES ──
+async function addCliente(e){
+  e.preventDefault();
+  const c={
+    nome:v('cNome'),documento:v('cDoc'),rg:v('cRG'),telefone:v('cTel'),
+    email:v('cEmail'),endereco:v('cEnder'),qualificacao:v('cQual'),
+    natureza:v('cNat'),tipoAcao:v('cAcao'),ano:v('cAno')||new Date().getFullYear(),
+    driveFolderId:'',driveFolderLink:'',wordFolderId:'',pdfFolderId:''
+  };
+  try{ const x=await criarEstrutura(c); Object.assign(c,x); toast('Pasta no Drive!','ok'); }
+  catch(err){ toast('Drive: '+err.message,'err'); }
+  E.clientes.push(c);
+  try{ await alimentarPlanilha(c); }catch(err){}
+  e.target.reset(); salvarDados();
+}
+
+async function addDocCliente(e){
+  e.preventDefault();
+  const arq=eid('dcArq').files[0];
+  const c=cpn(v('dcCliente'));
+  let dr={id:'',link:'',status:'Local'};
+  if(arq){
+    try{ dr=await enviarDrive(arq,v('dcDesc')||arq.name,c.pdfFolderId); toast('Enviado!','ok'); }
+    catch(err){ toast('Drive: '+err.message,'err'); }
+  }
+  E.documentos.push({
+    nome:v('dcDesc')||v('dcTipo'),tipo:v('dcTipo'),cliente:v('dcCliente'),
+    processo:'',arquivo:arq?arq.name:'Sem arquivo',
+    driveId:dr.id,driveLink:dr.link,driveStatus:dr.status,origem:'cliente'
+  });
+  e.target.reset(); salvarDados();
+}
+
+function addProcesso(e){
+  e.preventDefault();
+  E.processos.push({numero:v('pNum'),cliente:v('pCliente'),parte:v('pParte'),
+    orgao:v('pOrgao'),area:v('pArea'),status:v('pStatus'),resumo:v('pResumo')});
+  e.target.reset(); salvarDados();
+}
+
+async function addDoc(e){
+  e.preventDefault();
+  const arq=eid('dArq').files[0];
+  let dr={id:'',link:'',status:'Local'};
+  if(arq){
+    try{
+      const c=cpn(v('dCliente'));
+      const pasta=['Procuração','Contrato'].includes(v('dTipo'))?c.wordFolderId:c.pdfFolderId;
+      dr=await enviarDrive(arq,v('dNome')||arq.name,pasta);
+      toast('Enviado!','ok');
+    }catch(err){ toast('Drive: '+err.message,'err'); }
+  }
+  E.documentos.push({nome:v('dNome'),tipo:v('dTipo'),cliente:v('dCliente'),processo:v('dProcesso'),
+    arquivo:arq?arq.name:'Sem arquivo',driveId:dr.id,driveLink:dr.link,driveStatus:dr.status,origem:'docs'});
+  e.target.reset(); salvarDados();
+}
+
+function addTarefa(e){
+  e.preventDefault();
+  E.tarefas.push({titulo:v('tTitulo'),responsavel:v('tResp'),data:v('tData'),
+    status:v('tStatus'),prioridade:v('tPrio'),processo:v('tProc')});
+  e.target.reset(); salvarDados();
+}
+
+function concluirTarefa(i){ E.tarefas[i].status='Concluída'; salvarDados(); }
+
+function addAgenda(e){
+  e.preventDefault();
+  E.agenda.push({titulo:v('aTitulo'),data:v('aData'),hora:v('aHora'),
+    tipo:v('aTipo'),responsavel:v('aResp'),processo:v('aProc')});
+  e.target.reset(); salvarDados();
+}
+
+function addFin(e){
+  e.preventDefault();
+  if(!pode('financeiro')){ toast('Sem permissão.','err'); return; }
+  E.financeiro.push({cliente:v('fCliente'),descricao:v('fDesc'),valor:Number(v('fValor')),
+    tipo:v('fTipo'),status:v('fSit'),vencimento:v('fVenc')});
+  e.target.reset(); salvarDados();
+}
+
+function linkGA(a){
+  const t=encodeURIComponent(a.tipo+': '+a.titulo);
+  const det=encodeURIComponent('Responsável: '+a.responsavel+'\nMoreira & Rocha');
+  const hora=a.hora||'09:00';
+  const ini=a.data.replaceAll('-','')+'T'+hora.replace(':','')+'00';
+  const d=new Date(a.data+'T'+hora+':00'); d.setHours(d.getHours()+1);
+  const fim=d.toISOString().replace(/[-:]/g,'').slice(0,15);
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+t+'&dates='+ini+'/'+fim+'&details='+det+'&ctz=America/Sao_Paulo';
+}
+
+function alertas(){
+  const al=[];
+  E.agenda.forEach(function(a){
+    const d=diasAte(a.data);
+    if(d<0) al.push({tipo:'Prazo vencido',msg:a.titulo+' — '+a.data,nv:'danger'});
+    else if(d<=3) al.push({tipo:'Prazo em '+d+'d',msg:a.titulo,nv:'warn'});
+  });
+  E.tarefas.filter(function(t){ return t.status!=='Concluída'; }).forEach(function(t){
+    const d=diasAte(t.data);
+    if(d<0) al.push({tipo:'Tarefa vencida',msg:t.titulo,nv:'danger'});
+    else if(d<=2||t.prioridade==='Urgente') al.push({tipo:'Urgente',msg:t.titulo,nv:'warn'});
+  });
+  E.financeiro.filter(function(f){ return f.status==='Em atraso'; }).forEach(function(f){
+    al.push({tipo:'Fin. em atraso',msg:f.cliente+' '+moeda(f.valor),nv:'danger'});
+  });
+  return al;
+}
+
+function relClientes(){
+  const rows=E.clientes.map(function(c){
+    return '<tr><td><strong>'+c.nome+'</strong></td><td>'+c.documento+'</td><td>'+c.natureza+'</td><td>'+c.tipoAcao+'</td><td>'+c.telefone+'</td><td>'+c.email+'</td></tr>';
+  }).join('');
+  eid('relConteudo').innerHTML='<table><thead><tr><th>Nome</th><th>CPF/CNPJ</th><th>Natureza</th><th>Ação</th><th>Tel</th><th>E-mail</th></tr></thead><tbody>'+rows+'</tbody></table>';
+}
+function relProcessos(){
+  const rows=E.processos.map(function(p){
+    return '<tr><td><strong>'+p.numero+'</strong></td><td>'+p.cliente+'</td><td>'+p.area+'</td><td><span class="badge '+sb(p.status)+'">'+p.status+'</span></td><td>'+(p.orgao||'—')+'</td></tr>';
+  }).join('');
+  eid('relConteudo').innerHTML='<table><thead><tr><th>Número</th><th>Cliente</th><th>Área</th><th>Status</th><th>Órgão</th></tr></thead><tbody>'+rows+'</tbody></table>';
+}
+function relFinanceiro(){
+  var tot=0,rec=0,ab=0,at=0;
+  E.financeiro.forEach(function(f){
+    tot+=f.valor;
+    if(['Recebido','Pago'].includes(f.status)) rec+=f.valor; else ab+=f.valor;
+    if(f.status==='Em atraso') at+=f.valor;
+  });
+  const rows=E.financeiro.map(function(f){
+    return '<tr><td>'+f.cliente+'</td><td>'+f.descricao+'</td><td><strong>'+moeda(f.valor)+'</strong></td><td><span class="badge '+sb(f.status)+'">'+f.status+'</span></td><td>'+(f.vencimento||'—')+'</td></tr>';
+  }).join('');
+  eid('relConteudo').innerHTML=
+    '<div class="rel-stats">'+
+    '<div class="rel-stat"><span>Total</span><strong>'+moeda(tot)+'</strong></div>'+
+    '<div class="rel-stat"><span>Recebido</span><strong style="color:var(--green)">'+moeda(rec)+'</strong></div>'+
+    '<div class="rel-stat"><span>Em aberto</span><strong>'+moeda(ab)+'</strong></div>'+
+    '<div class="rel-stat"><span>Atraso</span><strong style="color:var(--red)">'+moeda(at)+'</strong></div>'+
+    '</div>'+
+    '<table><thead><tr><th>Cliente</th><th>Descrição</th><th>Valor</th><th>Situação</th><th>Vencimento</th></tr></thead><tbody>'+rows+'</tbody></table>';
+}
+function exportCSV(){
+  const rows=[['Cliente','CPF/CNPJ','Natureza','Ação','Telefone','Email']];
+  E.clientes.forEach(function(c){ rows.push([c.nome,c.documento,c.natureza,c.tipoAcao,c.telefone,c.email]); });
+  const csv=rows.map(function(r){ return r.map(function(x){ return '"'+String(x||'').replace(/"/g,'""')+'"'; }).join(','); }).join('\n');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  a.download='clientes-'+hoje()+'.csv'; a.click();
+  toast('CSV exportado!','ok');
+}
+
+
+// ── GERADOR DE DOCX REAL VIA docx.js ──
+function qualifCliente(c) {
+  var partes = [c.qualificacao, c.documento ? 'inscrito(a) no CPF/MF nº ' + c.documento : '', c.rg ? 'portador(a) do RG nº ' + c.rg : '', c.endereco ? 'residente e domiciliado(a) em ' + c.endereco : ''];
+  return partes.filter(Boolean).join(', ');
+}
+
+function toggleGeradorCampos(){
+  const t=v('gTipo');
+  eid('gSubCampos').style.display=t==='Substabelecimento'?'block':'none';
+  eid('gNotifCampos').style.display=t==='Notificação extrajudicial'?'block':'none';
+}
+
+function gerarDoc(e){
+  e.preventDefault();
+  const c=cpn(v('gCliente'));
+  const data=new Date().toLocaleDateString('pt-BR');
+  const obj=v('gObjeto')||'serviços advocatícios';
+  const val=v('gValor')||'conforme ajustado';
+  const tipo=v('gTipo');
+  const el=eid('documentoGerado');
+  const partes=[c.qualificacao,c.documento?'CPF/CNPJ nº '+c.documento:'',c.rg?'RG nº '+c.rg:'',c.endereco?'endereço: '+c.endereco:''];
+  const qual=partes.filter(Boolean).join(', ');
+  if(tipo==='Procuração ad judicia'){
+    var textoProc = 'PROCURAÇÃO AD JUDICIA';
+    textoProc += '\n\n';
+    textoProc += (c.nome||'');
+    if(qual) textoProc += ', '+qual;
+    textoProc += ', por meio deste instrumento particular de procuração, nomeia e constitui seu bastante procuradores, os advogados, Dr. Paulo Henrique Moreira de Souza, brasileiro, advogado, inscrito no CPF/MF nº: 119.367.186-85, regularmente inscrito na OAB/MG nº: 202.761 e Dr. Romário de Lima Rocha, brasileiro, advogado, inscrito no CPF/MF nº: 052.306.105-65, regularmente inscrito na OAB/MG nº: 202.312 com escritório profissional na Rua Nenê 52B, Centro, Extrema/MG, CEP: 37644-020 Centro, Extrema/MG e-mail: juridico@moreiraerochaadv.com.br a quem confere amplos poderes para o foro em geral, com a cláusula "Ad Judicia et Extra", em qualquer Juízo, Administração Pública, perante a Administração Fazendária Estadual, Receita Federal, Instância ou Tribunal, até final decisão, usando os recursos legais e acompanhando-os conferindo-lhe, ainda, poderes especiais para confessar, desistir, transigir, firmar compromissos ou acordos, receber citação inicial, reconhecer e dar procedência do pedido, renunciar ao direito sobre o qual se funda a ação, receber e dar quitação, agindo em conjunto ou separadamente, podendo ainda substabelecer esta em outrem, com ou sem reservas de iguais poderes, dando tudo por bom, firme e valioso.';
+    textoProc += '\n\n';
+    textoProc += ESC.cidade+', '+data+'.';
+    textoProc += '\n\n\n';
+    textoProc += '_____________________________________';
+    textoProc += '\n\n';
+    textoProc += (c.nome||'OUTORGANTE').toUpperCase();
+    el.textContent = textoProc;
+    return;
+  }
+  if(tipo==='Procuração especial extrajudicial'){
+    el.textContent='PROCURAÇÃO ESPECIAL EXTRAJUDICIAL\n\nOUTORGANTE: '+(c.nome||'')+', '+qual+'.\n\nOUTORGADOS: MOREIRA & ROCHA ADVOGADOS ASSOCIADOS.\n\nPODERES ESPECIAIS para: '+obj+'.\n\nLocal e data: ____________________, '+data+'.\n\n\n_____________________________________________\n'+(c.nome||'OUTORGANTE');
+    return;
+  }
+  if(tipo==='Contrato de honorários advocatícios'){
+    var tc = '';
+    tc += 'CONTRATO PARTICULAR DE PRESTAÇÃO DE SERVIÇOS PROFISSIONAIS DE ASSESSORIA JURÍDICA';
+    tc += '\n\n';
+    tc += 'Pelo presente instrumento particular de prestação de serviços de consultoria e advocacia, de um lado, ';
+    tc += (c.nome||'').toUpperCase();
+    if(qual) tc += ', '+qual;
+    tc += ', a seguir denominado(a) simplesmente CONTRATANTE e, de outro lado, PAULO HENRIQUE MOREIRA DE SOUZA, brasileiro, advogado, inscrito no CPF/MF nº: 119.367.186-85, regularmente inscrito na OAB/MG nº: 202.761 e Dr. ROMÁRIO DE LIMA ROCHA, brasileiro, advogado, inscrito no CPF/MF nº: 052.306.105-65, regularmente inscrito na OAB/MG nº: 202.312, com escritório profissional na Rua Nenê 52-B, Centro, Extrema/MG, CEP: 37644-020, a seguir denominados simplesmente CONTRATADOS, resolvem na melhor forma de Direito, firmar o presente contrato:';
+    tc += '\n\nI – OBJETO DO CONTRATO\n\n';
+    tc += 'O presente contrato tem como objeto a prestação de serviços profissionais de consultoria e advocacia especializadas, pelos CONTRATADOS ao CONTRATANTE, através de assessoria jurídica com o propósito específico de atuar em: '+(obj||'serviços advocatícios conforme necessidade do cliente')+'.';
+    tc += '\n\nO CONTRATANTE procurou o CONTRATADO a fim de buscar os meios jurídicos necessários, dentro da esfera de discricionariedade dos mesmos, para apresentar as notificações necessárias, ajuizar as ações competentes, continuar ou encerrar demandas, apresentando contestações e reconvenções, pleiteando indenizações necessárias, conforme a necessidade da situação.';
+    tc += '\n\nHavendo outro profissional atuando em eventuais processos em andamento, o CONTRATANTE se compromete a providenciar o substabelecimento da representação a favor do CONTRATADO dentro do prazo máximo de cinco (5) dias, ou promover a revogação do mandato anteriormente firmado.';
+    tc += '\n\nII – DAS OBRIGAÇÕES\n\n';
+    tc += 'O CONTRATADO obriga-se a efetuar, por seus próprios meios, todas as gestões necessárias ao cumprimento do presente contrato. O CONTRATANTE obriga-se a fornecer ao CONTRATADO toda a documentação e informação necessária ao cabal desempenho dos misteres assumidos, sempre com antecedência mínima de 96 (noventa e seis) horas úteis do serviço solicitado ou necessário.';
+    tc += '\n\nO CONTRATANTE obriga-se a seguir fielmente as orientações jurídicas apresentadas pelo CONTRATADO, sob pena de rescisão unilateral do presente contrato, além de pagar multa convencional correspondente a três (3) vezes o valor pactuado.';
+    tc += '\n\nO presente contrato é sigiloso, não podendo nenhuma das partes divulgar o seu conteúdo a terceiro, sob pena de decretação da quebra do contrato.';
+    tc += '\n\nIII – DO PREÇO E DAS CONDIÇÕES DE PAGAMENTO\n\n';
+    tc += 'Pelos serviços contratados o CONTRATANTE pagará ao CONTRATADO, a título de consultoria jurídica especializada e honorários advocatícios, '+(val||'valor a ser definido entre as partes')+'.';
+    tc += '\n\nParágrafo Primeiro: Os honorários de sucumbência pertencem ao CONTRATADO e não se confundem com os honorários contratuais aqui tratados, conforme art. 23 da Lei 8.906/94.';
+    tc += '\n\nParágrafo Segundo: O CONTRATANTE autoriza que o depósito de todos os proveitos econômicos seja feito na conta bancária do CONTRATADO e somente após realizados os descontos dos honorários convencionados será lhe repassado o saldo remanescente.';
+    tc += '\n\nIV – DOS PRAZOS\n\n';
+    tc += 'O presente contrato vigorará por tempo indeterminado e até o trânsito em julgado das demandas referidas, sendo que caso uma das partes pretenda rescindi-lo deverá comunicar sua intenção, por escrito, com antecedência mínima de 30 (trinta) dias.';
+    tc += '\n\nParágrafo Único: No caso de o CONTRATANTE rescindir o contrato de forma antecipada e/ou revogar o mandato no curso de ação judicial, serão devidos honorários proporcionais ao CONTRATADO calculados de acordo com a tabela da OAB/MG, ressalvado o mínimo de R$ 3.000,00 (três mil reais).';
+    tc += '\n\nV – CUSTAS\n\n';
+    tc += 'O CONTRATANTE declara-se ciente de que, caso receba salário superior a 40% do limite máximo dos benefícios do Regime Geral de Previdência Social, ou caso não comprove insuficiência de recursos, na forma dos §§ 3º e 4º do art. 790 da CLT, poderá vir a arcar com custas processuais.';
+    tc += '\n\nVI – DAS CARACTERÍSTICAS CONTRATUAIS\n\n';
+    tc += 'O presente contrato é um contrato de meio, obrigando o CONTRATADO a diligenciar por todos os meios para que se chegue ao fim desejado, não se responsabilizando, em hipótese alguma, pelo êxito nas causas.';
+    tc += '\n\nVII – DO LOCAL DE PRESTAÇÃO DO SERVIÇO\n\n';
+    tc += 'O local de prestação de serviço será no escritório do CONTRATADO e nas sedes dos juízos, apenas no horário comercial das 9:00 às 17:00 de segunda-feira a sexta-feira e com horário previamente agendado. Qualquer prestação de serviço fora desse horário ou local será acrescida do valor de R$ 500,00 (quinhentos reais).';
+    tc += '\n\nVIII – DA COMUNICAÇÃO OFICIAL\n\n';
+    tc += 'Todas as comunicações serão realizadas exclusivamente pelos canais oficiais:\n';
+    tc += 'E-mail: juridico@moreiraerochaadv.com.br\n';
+    tc += 'Telefone/WhatsApp: (35) 99949-8358\n\n';
+    tc += 'O CONTRATANTE declara estar ciente de que o CONTRATADO não solicita depósitos ou pagamentos fora dos termos deste contrato.';
+    tc += '\n\nIX – DO FORO DE ELEIÇÃO\n\n';
+    tc += 'Fica eleito o Foro da Comarca de Extrema para dirimir possíveis dúvidas oriundas do presente contrato, renunciando as partes, desde já, a qualquer outro.';
+    tc += '\n\nE por estarem assim, justos e contratados, assinam o presente instrumento em 2 (duas) vias de igual teor e forma.';
+    tc += '\n\n'+ESC.cidade+', '+data+'.';
+    tc += '\n\n\nCONTRATANTE:\n\n';
+    tc += '________________________________________\n';
+    tc += (c.nome||'CONTRATANTE').toUpperCase();
+    tc += '\n\n\nADVOGADOS:\n\n';
+    tc += '________________________________________\n';
+    tc += 'Paulo Henrique Moreira de Souza\n';
+    tc += 'OAB/MG nº 202.761';
+    tc += '\n\n________________________________________\n';
+    tc += 'Romário de Lima Rocha\n';
+    tc += 'OAB/MG nº 202.312';
+    el.textContent = tc;
+    return;
+  }
+  if(tipo==='Declaração de hipossuficiência'){
+    var textoDecl = 'DECLARAÇÃO DE HIPOSSUFICIÊNCIA';
+    textoDecl += '\n\n';
+    textoDecl += (c.nome||'');
+    if(qual) textoDecl += ', '+qual;
+    textoDecl += ', declaro para os devidos fins de direito, e sob as penas da lei, que sou pessoa pobre na acepção jurídica da palavra e não posso arcar com os honorários advocatícios, nem suportar o pagamento das custas e despesas processuais sem prejuízo de meu próprio sustento.';
+    textoDecl += '\n\nPor ser expressão da verdade, assino a presente declaração, responsabilizando-me pelas declarações e sujeito-me às sanções cíveis, administrativas e criminais pela falsa declaração, nos termos que preceitua a Lei nº 7.115/83.';
+    textoDecl += '\n\n';
+    textoDecl += ESC.cidade+', '+data+'.';
+    textoDecl += '\n\n\n';
+    textoDecl += '_____________________________________';
+    textoDecl += '\n\n';
+    textoDecl += (c.nome||'DECLARANTE').toUpperCase();
+    el.textContent = textoDecl;
+    return;
+  }
+  if(tipo==='Notificação extrajudicial'){
+    const notif=v('gNotifNome')||'NOTIFICADO';
+    const prazo=v('gNotifPrazo')||'10';
+    el.textContent='NOTIFICAÇÃO EXTRAJUDICIAL\n\nNOTIFICANTE: '+(c.nome||'')+', representado(a) por MOREIRA & ROCHA ADVOGADOS ASSOCIADOS.\n\nNOTIFICADO(A): '+notif+'.\n\nNotificamos V.Sa. acerca de: '+obj+'.\n\nPrazo para providências: '+prazo+' dias.\n\nLocal e data: ____________________, '+data+'.\n\n\n_____________________________________________\nMOREIRA & ROCHA ADVOGADOS ASSOCIADOS';
+    return;
+  }
+  const subNome=v('gSubNome')||'ADVOGADO SUBSTABELECIDO';
+  const subOab=v('gSubOab')||'OAB/UF nº ______';
+  const reserva=v('gSubReserva')||'Com reserva de poderes';
+  const subEnte=v('gSubEnte')||'MOREIRA & ROCHA ADVOGADOS ASSOCIADOS';
+  el.textContent='SUBSTABELECIMENTO '+reserva.toUpperCase()+'\n\n'+subEnte+', substabelecem a '+subNome+', '+subOab+', os poderes conferidos por '+(c.nome||'OUTORGANTE')+' para: '+obj+'.\n\nLocal e data: ____________________, '+data+'.\n\n\n_______________________________    _______________________________\n'+subEnte+'     '+subNome;
+}
+
+function copiarDoc(){ navigator.clipboard.writeText(eid('documentoGerado').textContent); toast('Copiado!','ok'); }
+function salvarDocGerado(){
+  var txt = eid('documentoGerado').textContent;
+  if(!txt || txt.startsWith('Preencha') || txt.startsWith('Selecione')){
+    toast('Preencha os campos e clique em ⚡ Gerar primeiro!','err'); return;
+  }
+  var clienteNome = v('gCliente');
+  if(!clienteNome){ toast('Selecione um cliente.','err'); return; }
+  var c = cpn(clienteNome);
+  var tipo = v('gTipo');
+  var params = {
+    objeto: v('gObjeto'),
+    valor: v('gValor'),
+    subNome: v('gSubNome'),
+    subOab: v('gSubOab'),
+    reserva: v('gSubReserva'),
+    subEnte: v('gSubEnte'),
+    notificado: v('gNotifNome'),
+    prazo: v('gNotifPrazo')
+  };
+  gerarEFazerUpload(tipo, c, params);
+}
+
+// DRIVE
+// ── GERADOR POR ABAS ──
+var abaAtiva = 'procuracao';
+
+function normalizarAbaDoc(aba){
+  var mapa = {
+    procuracoes: 'procuracao',
+    procuracao: 'procuracao',
+    contratos: 'contrato',
+    contrato: 'contrato',
+    declaracoes: 'declaracao',
+    declaracao: 'declaracao',
+    notificacoes: 'notificacao',
+    notificacao: 'notificacao',
+    substabelecimento: 'substabelecimento'
+  };
+  return mapa[aba] || aba;
+}
+
+function idAbaDoc(aba){
+  var mapa = {
+    procuracao: 'aba-procuracoes',
+    contrato: 'aba-contratos',
+    declaracao: 'aba-declaracoes',
+    substabelecimento: 'aba-substabelecimento',
+    notificacao: 'aba-notificacoes'
+  };
+  return mapa[normalizarAbaDoc(aba)] || ('aba-' + aba);
+}
+
+function mudarAbaDoc(aba, btn) {
+  document.querySelectorAll('.doc-tab').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.doc-aba').forEach(function(a){ a.classList.remove('active'); a.style.display='none'; });
+  if(btn) btn.classList.add('active');
+  var canonical = normalizarAbaDoc(aba);
+  var el = document.getElementById(idAbaDoc(canonical));
+  if(el){ el.classList.add('active'); el.style.display='flex'; }
+  abaAtiva = canonical;
+  // Atualiza os selects de clientes de cada aba
+  renderizarSelectsGerador();
+}
+
+function renderizarSelectsGerador(){
+  var nc = E.clientes.map(function(c){ return c.nome; });
+  var ids = ['gClienteProcuracao','gClienteContrato','gClienteDeclaracao','gClienteSubst','gClienteNotif'];
+  ids.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.innerHTML = opts(nc);
+  });
+}
+
+function previewAtual(){
+  var map = {
+    procuracao: 'previewProcuracao',
+    contrato: 'previewContrato',
+    declaracao: 'previewDeclaracao',
+    substabelecimento: 'previewSubstabelecimento',
+    notificacao: 'previewNotificacao'
+  };
+  return document.getElementById(map[abaAtiva]);
+}
+
+function copiarDocAba(){
+  var el = previewAtual();
+  if(!el){ toast('Nenhum documento gerado.','err'); return; }
+  navigator.clipboard.writeText(el.textContent);
+  toast('Copiado!','ok');
+}
+
+function nomeArquivoDoc(tipo, c){
+  var nome = (c && c.nome ? c.nome : 'CLIENTE').replace(/[\\/:*?"<>|]/g,'-').trim();
+  var mapa = {
+    procuracao: 'PROCURACAO',
+    contrato: 'CONTRATO DE HONORARIOS',
+    declaracao: 'DECLARACAO DE HIPOSSUFICIENCIA',
+    substabelecimento: 'SUBSTABELECIMENTO',
+    notificacao: 'NOTIFICACAO EXTRAJUDICIAL'
+  };
+  return (mapa[normalizarAbaDoc(tipo)] || 'DOCUMENTO') + ' - ' + nome + '.docx';
+}
+
+function paragrafoDocx(linha){
+  var docxLib = window.docx;
+  var texto = String(linha || '');
+  var upper = texto.trim().toUpperCase();
+  var ehTitulo = upper && upper === texto.trim() && texto.trim().length < 120;
+  return new docxLib.Paragraph({
+    children: [new docxLib.TextRun({ text: texto, bold: ehTitulo, size: ehTitulo ? 28 : 24 })],
+    spacing: { after: texto.trim() ? 180 : 160 },
+    alignment: ehTitulo ? docxLib.AlignmentType.CENTER : docxLib.AlignmentType.JUSTIFIED
+  });
+}
+
+async function criarBlobDocx(texto){
+  if(!window.docx || !window.docx.Document || !window.docx.Packer){
+    throw new Error('Biblioteca DOCX não carregou. Verifique a internet ou o bloqueio do CDN.');
+  }
+  var docxLib = window.docx;
+  var linhas = String(texto || '').split(/\n/);
+  var children = linhas.map(paragrafoDocx);
+  var doc = new docxLib.Document({
+    sections: [{
+      properties: {
+        page: { margin: { top: 1440, right: 1440, bottom: 1440, left: 1440 } }
+      },
+      children: children
+    }]
+  });
+  return await docxLib.Packer.toBlob(doc);
+}
+
+async function baixarDocAba(aba){
+  try{
+    abaAtiva = normalizarAbaDoc(aba || abaAtiva);
+    gerarDocAba(abaAtiva);
+    var el = previewAtual();
+    if(!el || !el.textContent || el.textContent.indexOf('Preencha os campos') >= 0){
+      toast('Gere o documento primeiro.','err'); return;
+    }
+    var dados = getDadosAba(abaAtiva);
+    var blob = await criarBlobDocx(el.textContent);
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = nomeArquivoDoc(abaAtiva, dados ? dados.cliente : null);
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    toast('Documento Word gerado!','ok');
+  }catch(err){
+    console.error(err);
+    toast('Erro ao gerar Word: ' + err.message,'err');
+  }
+}
+
+async function gerarEFazerUpload(tipo, c, params){
+  try{
+    var aba = normalizarAbaDoc(tipo);
+    if(String(tipo).toLowerCase().indexOf('honor') >= 0) aba = 'contrato';
+    if(String(tipo).toLowerCase().indexOf('hipossufici') >= 0) aba = 'declaracao';
+    if(String(tipo).toLowerCase().indexOf('procura') >= 0) aba = 'procuracao';
+    if(String(tipo).toLowerCase().indexOf('notifica') >= 0) aba = 'notificacao';
+    if(String(tipo).toLowerCase().indexOf('substabelec') >= 0) aba = 'substabelecimento';
+    gerarDocAba(aba);
+    var el = previewAtual();
+    var blob = await criarBlobDocx(el.textContent);
+    var file = new File([blob], nomeArquivoDoc(aba, c), {type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+    var estrutura = c.driveFolderId ? {wordFolderId:c.wordFolderId} : await criarEstrutura(c);
+    var destino = estrutura.wordFolderId || estrutura.driveFolderId || DRIVE_FOLDER_ID || '';
+    await enviarDrive(file, file.name, destino);
+    toast('Documento gerado e enviado ao Drive!','ok');
+  }catch(err){
+    console.error(err);
+    toast('Erro ao gerar/enviar: '+err.message,'err');
+  }
+}
+
+function getDadosAba(aba){
+  if(aba==='procuracao'){
+    return {
+      tipo: document.getElementById('gTipoProcuracao').value || 'ad judicia',
+      cliente: cpn(document.getElementById('gClienteProcuracao').value),
+      params: { objeto: document.getElementById('gObjetoProcuracao').value }
+    };
+  }
+  if(aba==='contrato'){
+    return {
+      tipo: 'Contrato de honorários advocatícios',
+      cliente: cpn(document.getElementById('gClienteContrato').value),
+      params: { objeto: document.getElementById('gObjetoContrato').value, valor: document.getElementById('gValorContrato').value }
+    };
+  }
+  if(aba==='declaracao'){
+    return {
+      tipo: 'Declaração de hipossuficiência',
+      cliente: cpn(document.getElementById('gClienteDeclaracao').value),
+      params: {}
+    };
+  }
+  if(aba==='substabelecimento'){
+    return {
+      tipo: 'Substabelecimento',
+      cliente: cpn(document.getElementById('gClienteSubst').value),
+      params: {
+        subNome: document.getElementById('gSubNome').value,
+        subOab: document.getElementById('gSubOab').value,
+        reserva: document.getElementById('gSubReserva').value,
+        subEnte: document.getElementById('gSubEnte').value,
+        objeto: document.getElementById('gObjetoSubst').value
+      }
+    };
+  }
+  if(aba==='notificacao'){
+    return {
+      tipo: 'Notificação extrajudicial',
+      cliente: cpn(document.getElementById('gClienteNotif').value),
+      params: {
+        notificado: document.getElementById('gNotifNome').value,
+        objeto: document.getElementById('gObjetoNotif').value,
+        prazo: document.getElementById('gNotifPrazo').value
+      }
+    };
+  }
+  return null;
+}
+
+function gerarDocAba(aba){
+  abaAtiva = normalizarAbaDoc(aba);
+  var dados = getDadosAba(abaAtiva);
+  if(!dados){ toast('Erro.','err'); return; }
+  if(!dados.cliente||!dados.cliente.nome){ toast('Selecione um cliente.','err'); return; }
+  var c = dados.cliente;
+  var tipo = dados.tipo;
+  var params = dados.params;
+  var partes = [];
+  if(c.qualificacao) partes.push(c.qualificacao);
+  if(c.documento) partes.push('inscrito(a) no CPF/MF n\u00ba ' + c.documento);
+  if(c.rg) partes.push('portador(a) do RG n\u00ba ' + c.rg);
+  if(c.endereco) partes.push('residente e domiciliado(a) em ' + c.endereco);
+  var qual = partes.join(', ');
+  var dataHoje = new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'long',year:'numeric'});
+  var el = previewAtual();
+  if(!el) return;
+  var txt = '';
+  var NL = '\n';
+
+  if(tipo.indexOf('ad judicia') >= 0){
+    txt = 'PROCURAÇÃO AD JUDICIA' + NL + NL;
+    txt += (c.nome||'').toUpperCase();
+    if(qual) txt += ', ' + qual;
+    txt += ', por meio deste instrumento particular de procuração, nomeia e constitui seu bastante procuradores, os advogados, Dr. Paulo Henrique Moreira de Souza, brasileiro, advogado, inscrito no CPF/MF nº: 119.367.186-85, regularmente inscrito na OAB/MG nº: 202.761 e Dr. Romário de Lima Rocha, brasileiro, advogado, inscrito no CPF/MF nº: 052.306.105-65, regularmente inscrito na OAB/MG nº: 202.312 com escritório profissional na Rua Nenê 52B, Centro, Extrema/MG, CEP: 37644-020, e-mail: juridico@moreiraerochaadv.com.br, a quem confere amplos poderes para o foro em geral, com a cláusula "Ad Judicia et Extra", em qualquer Juízo, Administração Pública, perante a Administração Fazendária Estadual, Receita Federal, Instância ou Tribunal, até final decisão, usando os recursos legais e acompanhando-os conferindo-lhe, ainda, poderes especiais para confessar, desistir, transigir, firmar compromissos ou acordos, receber citação inicial, reconhecer e dar procedência do pedido, renunciar ao direito sobre o qual se funda a ação, receber e dar quitação, agindo em conjunto ou separadamente, podendo ainda substabelecer esta em outrem, com ou sem reservas de iguais poderes, dando tudo por bom, firme e valioso.';
+    txt += NL + NL + 'Extrema/MG, ' + dataHoje + '.' + NL + NL + NL + NL + NL;
+    txt += '_____________________________________' + NL + NL;
+    txt += (c.nome||'OUTORGANTE').toUpperCase();
+    el.textContent = txt; return;
+  }
+
+  if(tipo.indexOf('extrajudicial') >= 0){
+    txt = 'PROCURAÇÃO ESPECIAL EXTRAJUDICIAL' + NL + NL;
+    txt += (c.nome||'').toUpperCase();
+    if(qual) txt += ', ' + qual;
+    txt += ', confere poderes especiais a MOREIRA & ROCHA ADVOGADOS ASSOCIADOS para representá-lo(a) perante órgãos públicos, autarquias, repartições federais, estaduais e municipais, cartórios e entidades privadas, para fins de: ' + (params.objeto||'serviços advocatícios') + '.';
+    txt += NL + NL + 'Extrema/MG, ' + dataHoje + '.' + NL + NL + NL + NL + NL;
+    txt += '_____________________________________' + NL + NL;
+    txt += (c.nome||'OUTORGANTE').toUpperCase();
+    el.textContent = txt; return;
+  }
+
+  if(tipo.indexOf('hipossufici') >= 0){
+    txt = 'DECLARAÇÃO DE HIPOSSUFICIÊNCIA' + NL + NL;
+    txt += (c.nome||'').toUpperCase();
+    if(qual) txt += ', ' + qual;
+    txt += ', declaro para os devidos fins de direito, e sob as penas da lei, que sou pessoa pobre na acepção jurídica da palavra e não posso arcar com os honorários advocatícios, nem suportar o pagamento das custas e despesas processuais sem prejuízo de meu próprio sustento.';
+    txt += NL + NL + 'Por ser expressão da verdade, assino a presente declaração, responsabilizando-me pelas declarações e sujeito-me às sanções cíveis, administrativas e criminais pela falsa declaração, nos termos que preceitua a Lei nº 7.115/83.';
+    txt += NL + NL + 'Extrema/MG, ' + dataHoje + '.' + NL + NL + NL + NL + NL;
+    txt += '_____________________________________' + NL + NL;
+    txt += (c.nome||'DECLARANTE').toUpperCase();
+    el.textContent = txt; return;
+  }
+
+  if(tipo.indexOf('honor') >= 0){
+    var obj = params.objeto||'serviços advocatícios';
+    var val = params.valor||'valor a ser definido entre as partes';
+    txt = 'CONTRATO PARTICULAR DE PRESTAÇÃO DE SERVIÇOS PROFISSIONAIS DE ASSESSORIA JURÍDICA' + NL + NL;
+    txt += 'Pelo presente instrumento particular de prestação de serviços de consultoria e advocacia, de um lado, ';
+    txt += (c.nome||'').toUpperCase() + ', ' + qual;
+    txt += ', a seguir denominado(a) simplesmente CONTRATANTE e, de outro lado, PAULO HENRIQUE MOREIRA DE SOUZA, brasileiro, advogado, inscrito no CPF/MF nº: 119.367.186-85, regularmente inscrito na OAB/MG nº: 202.761 e Dr. ROMÁRIO DE LIMA ROCHA, brasileiro, advogado, inscrito no CPF/MF nº: 052.306.105-65, regularmente inscrito na OAB/MG nº: 202.312, com escritório profissional na Rua Nenê 52-B, Centro, Extrema/MG, CEP: 37644-020, a seguir denominados simplesmente CONTRATADOS, resolvem na melhor forma de Direito, firmar o presente contrato:';
+    txt += NL + NL + 'I – OBJETO DO CONTRATO' + NL + NL;
+    txt += 'O presente contrato tem como objeto a prestação de serviços profissionais de consultoria e advocacia especializadas, pelos CONTRATADOS ao CONTRATANTE, através de assessoria jurídica com o propósito específico de atuar na ' + obj + '.';
+    txt += NL + NL + 'O CONTRATANTE procurou o CONTRATADO a fim de buscar os meios jurídicos necessários, para apresentar as notificações necessárias, ajuizar as ações competentes, continuar ou encerrar demandas, apresentando contestações e reconvenções, pleiteando indenizações necessárias, conforme a necessidade da situação.';
+    txt += NL + NL + 'Havendo outro profissional atuando em eventuais processos em andamento, o CONTRATANTE se compromete a providenciar o substabelecimento da representação a favor do CONTRATADO dentro do prazo máximo de cinco (5) dias.';
+    txt += NL + NL + 'II – DAS OBRIGAÇÕES' + NL + NL;
+    txt += 'O CONTRATADO obriga-se a efetuar, por seus próprios meios, todas as gestões necessárias ao cumprimento do presente contrato. O CONTRATANTE obriga-se a fornecer ao CONTRATADO toda a documentação e informação necessária, sempre com antecedência mínima de 96 (noventa e seis) horas úteis.';
+    txt += NL + NL + 'O CONTRATANTE obriga-se a seguir fielmente as orientações jurídicas apresentadas pelo CONTRATADO, sob pena de rescisão unilateral, além de pagar multa convencional correspondente a três (3) vezes o valor pactuado.';
+    txt += NL + NL + 'O presente contrato é sigiloso, não podendo nenhuma das partes divulgar o seu conteúdo a terceiro.';
+    txt += NL + NL + 'III – DO PREÇO E DAS CONDIÇÕES DE PAGAMENTO' + NL + NL;
+    txt += 'Pelos serviços contratados o CONTRATANTE pagará ao CONTRATADO, a título de honorários advocatícios, ' + val + '.';
+    txt += NL + NL + 'Parágrafo Primeiro: Os honorários de sucumbência pertencem ao CONTRATADO e não se confundem com os honorários contratuais, conforme art. 23 da Lei 8.906/94.';
+    txt += NL + NL + 'Parágrafo Segundo: O CONTRATANTE autoriza que o depósito de todos os proveitos econômicos seja feito na conta bancária do CONTRATADO.';
+    txt += NL + NL + 'IV – DOS PRAZOS' + NL + NL;
+    txt += 'O presente contrato vigora por tempo indeterminado até o trânsito em julgado, podendo ser rescindido com aviso prévio de 30 dias.';
+    txt += NL + NL + 'Parágrafo Único: Em caso de rescisão antecipada, serão devidos honorários proporcionais calculados pela tabela da OAB/MG, ressalvado o mínimo de R$ 3.000,00.';
+    txt += NL + NL + 'V – CUSTAS' + NL + NL;
+    txt += 'O CONTRATANTE declara-se ciente de que poderá arcar com custas processuais conforme §§ 3º e 4º do art. 790 da CLT.';
+    txt += NL + NL + 'VI – DAS CARACTERÍSTICAS CONTRATUAIS' + NL + NL;
+    txt += 'O presente contrato é um contrato de meio, não se responsabilizando o CONTRATADO pelo êxito nas causas.';
+    txt += NL + NL + 'VII – DO LOCAL DE PRESTAÇÃO DO SERVIÇO' + NL + NL;
+    txt += 'Escritório do CONTRATADO, das 9h às 17h, segunda a sexta, com agendamento prévio. Serviços fora desse horário: acréscimo de R$ 500,00.';
+    txt += NL + NL + 'VIII – DA COMUNICAÇÃO OFICIAL' + NL + NL;
+    txt += 'E-mail: juridico@moreiraerochaadv.com.br | WhatsApp: (35) 99949-8358. O CONTRATANTE declara estar ciente de que o CONTRATADO não solicita depósitos ou pagamentos fora dos termos deste contrato.';
+    txt += NL + NL + 'IX – DO FORO DE ELEIÇÃO' + NL + NL;
+    txt += 'Foro da Comarca de Extrema para dirimir possíveis dúvidas oriundas do presente contrato.';
+    txt += NL + NL + 'E por estarem assim, justos e contratados, assinam o presente instrumento em 2 (duas) vias de igual teor e forma.';
+    txt += NL + NL + 'Extrema/MG, ' + dataHoje + '.' + NL + NL + NL;
+    txt += 'CONTRATANTE:' + NL + NL + NL;
+    txt += '________________________________________' + NL;
+    txt += (c.nome||'CONTRATANTE').toUpperCase() + NL + NL + NL + NL;
+    txt += 'ADVOGADOS:' + NL + NL + NL;
+    txt += '________________________________________' + NL;
+    txt += 'Paulo Henrique Moreira de Souza' + NL + 'OAB/MG nº 202.761' + NL + NL + NL;
+    txt += '________________________________________' + NL;
+    txt += 'Romário de Lima Rocha' + NL + 'OAB/MG nº 202.312';
+    el.textContent = txt; return;
+  }
+
+  if(tipo.indexOf('ubstabelec') >= 0){
+    var reservaTxt = (params.reserva === 'Sem reserva de poderes') ? 'SEM RESERVA DE PODERES' : 'COM RESERVA DE PODERES';
+    var subNome = params.subNome||'ADVOGADO SUBSTABELECIDO';
+    var subOab = params.subOab||'OAB/UF nº ______';
+    var subEnte = params.subEnte||'MOREIRA & ROCHA ADVOGADOS ASSOCIADOS';
+    txt = 'SUBSTABELECIMENTO ' + reservaTxt + NL + NL;
+    txt += subEnte + ', advogados constituídos por ' + (c.nome||'').toUpperCase();
+    if(qual) txt += ', ' + qual;
+    txt += ', substabelecem a ' + subNome + ', inscrito(a) na ' + subOab + ', os poderes que lhes foram conferidos para representação em juízo ou fora dele, ' + reservaTxt.toLowerCase() + '.';
+    if(params.objeto) txt += NL + NL + 'Referente a: ' + params.objeto + '.';
+    txt += NL + NL + 'Extrema/MG, ' + dataHoje + '.' + NL + NL + NL + NL;
+    txt += '________________________________________' + NL + subEnte + NL + '(Substabelecente)' + NL + NL + NL;
+    txt += '________________________________________' + NL + subNome + NL + subOab;
+    el.textContent = txt; return;
+  }
+
+  if(tipo.indexOf('otifica') >= 0){
+    var notif = params.notificado||'NOTIFICADO';
+    var prazo = params.prazo||'10';
+    txt = 'NOTIFICAÇÃO EXTRAJUDICIAL' + NL + NL;
+    txt += 'NOTIFICANTE: ' + (c.nome||'') + NL + 'NOTIFICADO(A): ' + notif + NL + NL;
+    txt += 'MOREIRA & ROCHA ADVOGADOS ASSOCIADOS, na qualidade de representante legal do(a) notificante, vem notificar V.Sa. acerca de: ' + (params.objeto||'matéria de interesse') + '.';
+    txt += NL + NL + 'Fica o(a) notificado(a) CIENTIFICADO(A) E INTERPELADO(A) a, no prazo de ' + prazo + ' (' + prazo + ') dias contados do recebimento desta, adotar as providências cabíveis, sob pena de adoção das medidas judiciais e extrajudiciais pertinentes, sem prejuízo das perdas e danos.';
+    txt += NL + NL + 'Extrema/MG, ' + dataHoje + '.' + NL + NL + NL + NL;
+    txt += '________________________________________' + NL;
+    txt += 'MOREIRA & ROCHA ADVOGADOS ASSOCIADOS' + NL + 'OAB/MG nº 202.761 | OAB/MG nº 202.312';
+    el.textContent = txt; return;
+  }
+
+  el.textContent = 'Tipo não reconhecido.';
+}
+
+async function autorizarDrive(){
+  try{
+    await getToken();
+    toast('Drive autorizado! Conta: moreiraerochaadv@gmail.com','ok');
+  }catch(err){ toast('Erro: '+err.message,'err'); }
+}
+async function getToken(){
+  if(gToken) return gToken;
+  if(!window.google||!google.accounts||!google.accounts.oauth2) throw new Error('Biblioteca Google não carregou.');
+  return new Promise(function(res,rej){
+    const client=google.accounts.oauth2.initTokenClient({
+      client_id:GOOGLE_CLIENT_ID,scope:DRIVE_SCOPES,
+      hint:'moreiraerochaadv@gmail.com',
+      callback:function(r){
+        if(r.error) return rej(new Error(r.error));
+        gToken=r.access_token;
+        res(gToken);
+      }
+    });
+    client.requestAccessToken({prompt:'consent',login_hint:'moreiraerochaadv@gmail.com'});
+  });
+}
+async function buscarPasta(nome,pid){
+  const tk=await getToken();
+  const n=String(nome).replaceAll("'","");
+  const pq=pid?" and '"+pid+"' in parents":'';
+  const q="name='"+n+"' and mimeType='application/vnd.google-apps.folder' and trashed=false"+pq;
+  const r=await fetch('https://www.googleapis.com/drive/v3/files?q='+encodeURIComponent(q)+'&fields=files(id,name,webViewLink)',{headers:{Authorization:'Bearer '+tk}});
+  if(!r.ok) throw new Error('Falha ao buscar pasta.');
+  const j=await r.json(); return j.files&&j.files[0]?j.files[0]:null;
+}
+async function criarPasta(nome,pid){
+  const tk=await getToken();
+  const ex=await buscarPasta(nome,pid); if(ex) return ex;
+  const m={name:nome,mimeType:'application/vnd.google-apps.folder'};
+  if(pid) m.parents=[pid];
+  const r=await fetch('https://www.googleapis.com/drive/v3/files?fields=id,name,webViewLink',
+    {method:'POST',headers:{Authorization:'Bearer '+tk,'Content-Type':'application/json'},body:JSON.stringify(m)});
+  if(!r.ok) throw new Error('Falha ao criar pasta.');
+  return await r.json();
+}
+async function criarEstrutura(c){
+  const raiz=DRIVE_FOLDER_ID?{id:DRIVE_FOLDER_ID}:await criarPasta(PASTA_RAIZ);
+  const nat=await criarPasta(c.natureza||'Outros',raiz.id);
+  const nm=(c.nome+' - '+(c.tipoAcao||'Sem tipo')+' - '+(c.ano||new Date().getFullYear())).replace(/[/:*?"<>|]/g,'-');
+  const pasta=await criarPasta(nm,nat.id);
+  const word=await criarPasta('WORD',pasta.id);
+  const pdf=await criarPasta('PDF',pasta.id);
+  return {driveFolderId:pasta.id,driveFolderLink:pasta.webViewLink||'',wordFolderId:word.id,pdfFolderId:pdf.id};
+}
+async function enviarDrive(arq,nome,pid){
+  const tk=await getToken();
+  const m={name:nome||arq.name};
+  if(pid) m.parents=[pid]; else if(DRIVE_FOLDER_ID) m.parents=[DRIVE_FOLDER_ID];
+  const fd=new FormData();
+  fd.append('metadata',new Blob([JSON.stringify(m)],{type:'application/json'}));
+  fd.append('file',arq);
+  const r=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,webViewLink',
+    {method:'POST',headers:new Headers({Authorization:'Bearer '+tk}),body:fd});
+  if(!r.ok) throw new Error('Falha no upload.');
+  const j=await r.json(); return {id:j.id,link:j.webViewLink||'',status:'Enviado ao Drive'};
+}
+async function alimentarPlanilha(c){
+  if(!GOOGLE_SHEETS_ID){ toast('ID da planilha não configurado.','err'); return; }
+  try {
+    const tk = await getToken();
+    // Verifica se já tem cabeçalho
+    const checkUrl = 'https://sheets.googleapis.com/v4/spreadsheets/'+GOOGLE_SHEETS_ID+'/values/Plan1!A1:L1';
+    const check = await fetch(checkUrl, {headers:{Authorization:'Bearer '+tk}});
+    const checkJson = await check.json();
+    const vals = [];
+    // Se planilha vazia, insere cabeçalho primeiro
+    if(!checkJson.values || checkJson.values.length === 0){
+      vals.push(['Data','Nome','CPF/CNPJ','RG','Telefone','Email','Endereço','Qualificação','Natureza','Tipo de Ação','Ano','Link Drive']);
+    }
+    vals.push([new Date().toLocaleString('pt-BR'),c.nome||'',c.documento||'',c.rg||'',c.telefone||'',c.email||'',c.endereco||'',c.qualificacao||'',c.natureza||'',c.tipoAcao||'',c.ano||'',c.driveFolderLink||'']);
+    const url = 'https://sheets.googleapis.com/v4/spreadsheets/'+GOOGLE_SHEETS_ID+'/values/Plan1!A1:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS';
+    const resp = await fetch(url,{method:'POST',headers:{Authorization:'Bearer '+tk,'Content-Type':'application/json'},body:JSON.stringify({values:vals})});
+    if(!resp.ok) throw new Error('Erro ao salvar na planilha: '+resp.status);
+    toast('Cliente salvo na planilha!','ok');
+  } catch(err){
+    toast('Planilha: '+err.message,'err');
+    console.error('alimentarPlanilha erro:', err);
+  }
+}
+async function sincronizarDrive(){
+  try{
+    const blob=new Blob([JSON.stringify(E,null,2)],{type:'application/json'});
+    const arq=new File([blob],'backup-'+hoje()+'.json',{type:'application/json'});
+    const d=await enviarDrive(arq,arq.name,'');
+    toast('Backup no Drive! ID: '+d.id,'ok');
+  }catch(err){ toast('Drive: '+err.message,'err'); }
+}
+
+function filtrar(id,t){
+  document.querySelectorAll('#'+id+' tbody tr').forEach(function(r){
+    r.style.display=r.textContent.toLowerCase().includes(t.toLowerCase())?'':'none';
+  });
+}
+
+function render(){
+  const nc=E.clientes.map(function(c){ return c.nome; });
+  const np=E.processos.map(function(p){ return p.numero; });
+  const nu=E.usuarios.filter(function(u){ return u.ativo!==false; }).map(function(u){ return u.nome; });
+
+  [['pCliente',nc],['dCliente',nc],['fCliente',nc],['dcCliente',nc]].forEach(function(p){
+    const el=eid(p[0]); if(el) el.innerHTML=opts(p[1]);
+  });
+  [['dProcesso',np],['tProc',np],['aProc',np]].forEach(function(p){
+    const el=eid(p[0]); if(el) el.innerHTML=opts(p[1],'Sem processo');
+  });
+  [['tResp',nu],['aResp',nu]].forEach(function(p){
+    const el=eid(p[0]); if(el) el.innerHTML=opts(p[1]);
+  });
+
+  const al=alertas();
+  eid('totalClientes').textContent=E.clientes.length;
+  eid('totalProcessos').textContent=E.processos.length;
+  eid('totalTarefas').textContent=E.tarefas.filter(function(t){ return t.status!=='Concluída'; }).length;
+  eid('totalAlertas').textContent=al.length;
+
+  // Dashboard agenda
+  const meses=['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+  const prox=E.agenda.slice().sort(function(a,b){ return new Date(a.data)-new Date(b.data); })
+    .filter(function(a){ return diasAte(a.data)>=0; }).slice(0,4);
+  eid('agResume').innerHTML=prox.length?prox.map(function(a){
+    var pts=a.data.split('-');
+    return '<div class="ag-item"><div class="ag-date"><div class="ag-day">'+pts[2]+'</div><div class="ag-mon">'+meses[+pts[1]-1]+'</div></div>'+
+      '<div class="ag-info"><h4>'+a.titulo+'</h4><p>'+a.tipo+(a.hora?' · '+a.hora:'')+'</p></div></div>';
+  }).join(''):'<p class="empty-txt">Nenhum compromisso próximo.</p>';
+
+  eid('alResume').innerHTML=al.length?al.slice(0,5).map(function(a){
+    return '<div class="al-item '+(a.nv==='danger'?'al-danger':'al-warn')+'"><strong>'+a.tipo+'</strong> — '+a.msg+'</div>';
+  }).join(''):'<div class="al-item al-ok">✓ Nenhum alerta crítico.</div>';
+
+  var cb=eid('calBox');
+  if(cb) cb.innerHTML=GOOGLE_CALENDAR_EMBED_URL?
+    '<iframe style="width:100%;height:100%;border:none;border-radius:8px" src="'+GOOGLE_CALENDAR_EMBED_URL+'"></iframe>':
+    '<div class="cal-placeholder"><div class="cal-icon">📅</div><p>Configure <strong>GOOGLE_CALENDAR_EMBED_URL</strong><br>no código.</p></div>';
+
+  var ft=0,fr=0;
+  E.financeiro.forEach(function(f){ ft+=f.valor; if(['Recebido','Pago'].includes(f.status)) fr+=f.valor; });
+  var pct=ft?Math.round(fr/ft*100):0;
+  eid('dashFin').innerHTML=
+    '<div class="fin-row"><span>Total lançado</span><strong>'+moeda(ft)+'</strong></div>'+
+    '<div class="fin-row"><span>Recebido</span><strong style="color:var(--green)">'+moeda(fr)+'</strong></div>'+
+    '<div class="fin-bar"><div class="fin-fill" style="width:'+pct+'%"></div></div>'+
+    '<p class="fin-pct">'+pct+'% recebido</p>';
+
+  // Clientes
+  eid('tabelaClientes').querySelector('tbody').innerHTML=E.clientes.length?
+    E.clientes.map(function(c,i){
+      return '<tr><td><strong>'+c.nome+'</strong><br><small>'+(c.qualificacao||'—')+'</small></td>'+
+        '<td>'+(c.documento||'—')+'<br><small>RG: '+(c.rg||'—')+'</small></td>'+
+        '<td><span class="badge b-blue">'+c.natureza+'</span><br><small>'+(c.tipoAcao||'—')+'</small></td>'+
+        '<td>'+(c.telefone||'—')+'<br><small>'+(c.email||'—')+'</small></td>'+
+        '<td>'+(c.driveFolderLink?'<a class="btn-tbl btn-gold-sm" href="'+c.driveFolderLink+'" target="_blank">Drive</a>':'<span class="badge b-gray">Local</span>')+'</td>'+
+        '<td><button class="btn-tbl btn-del" onclick="rem(\'clientes\','+i+')">✕</button></td></tr>';
+    }).join(''):'<tr><td colspan="6" class="empty-row">Nenhum cliente cadastrado</td></tr>';
+
+  var dc=E.documentos.filter(function(d){ return d.origem==='cliente'; });
+  eid('tabelaDocsCliente').querySelector('tbody').innerHTML=dc.length?
+    dc.map(function(d,i){
+      return '<tr><td>'+d.cliente+'</td><td><span class="badge b-gold">'+d.tipo+'</span></td>'+
+        '<td>'+d.nome+'</td><td>'+d.arquivo+'</td>'+
+        '<td>'+(d.driveLink?'<a class="btn-tbl btn-gold-sm" href="'+d.driveLink+'" target="_blank">Drive</a>':'<span class="badge b-gray">'+(d.driveStatus||'Local')+'</span>')+'</td>'+
+        '<td><button class="btn-tbl btn-del" onclick="remDocCli(\''+d.cliente+'\',\''+d.nome+'\',\''+d.arquivo+'\')">✕</button></td></tr>';
+    }).join(''):'<tr><td colspan="6" class="empty-row">Nenhum documento</td></tr>';
+
+  // Processos
+  eid('tabelaProcessos').querySelector('tbody').innerHTML=E.processos.length?
+    E.processos.map(function(p,i){
+      return '<tr><td><strong>'+p.numero+'</strong></td><td>'+p.cliente+'</td>'+
+        '<td><small>'+(p.parte||'—')+'</small></td>'+
+        '<td><span class="badge b-blue">'+p.area+'</span></td>'+
+        '<td>'+(p.orgao||'—')+'</td>'+
+        '<td><span class="badge '+sb(p.status)+'">'+p.status+'</span></td>'+
+        '<td><button class="btn-tbl btn-del" onclick="rem(\'processos\','+i+')">✕</button></td></tr>';
+    }).join(''):'<tr><td colspan="7" class="empty-row">Nenhum processo</td></tr>';
+
+  // Documentos
+  eid('tabelaDocs').querySelector('tbody').innerHTML=E.documentos.length?
+    E.documentos.map(function(d,i){
+      return '<tr><td>'+d.nome+'</td><td><span class="badge b-gold">'+d.tipo+'</span></td>'+
+        '<td>'+(d.cliente||'—')+'</td><td>'+(d.arquivo||'—')+'</td>'+
+        '<td>'+(d.driveLink?'<a class="btn-tbl btn-gold-sm" href="'+d.driveLink+'" target="_blank">Abrir</a>':'<span class="badge b-gray">'+(d.driveStatus||'Local')+'</span>')+'</td>'+
+        '<td><button class="btn-tbl btn-del" onclick="rem(\'documentos\','+i+')">✕</button></td></tr>';
+    }).join(''):'<tr><td colspan="6" class="empty-row">Nenhum documento</td></tr>';
+
+  // Tarefas
+  eid('tabelaTarefas').querySelector('tbody').innerHTML=E.tarefas.length?
+    E.tarefas.map(function(t,i){
+      var d=diasAte(t.data);
+      return '<tr><td><strong>'+t.titulo+'</strong></td><td>'+t.responsavel+'</td>'+
+        '<td>'+t.data+'<br><small style="color:'+(d<0?'var(--red)':'var(--muted)')+';">'+(d<0?'Vencida':d+'d')+'</small></td>'+
+        '<td><span class="badge '+sb(t.prioridade)+'">'+t.prioridade+'</span></td>'+
+        '<td><span class="badge '+sb(t.status)+'">'+t.status+'</span></td>'+
+        '<td style="display:flex;gap:4px">'+(t.status!=='Concluída'?'<button class="btn-tbl btn-ok" onclick="concluirTarefa('+i+')">✓</button>':'')+
+        '<button class="btn-tbl btn-del" onclick="rem(\'tarefas\','+i+')">✕</button></td></tr>';
+    }).join(''):'<tr><td colspan="6" class="empty-row">Nenhuma tarefa</td></tr>';
+
+  // Agenda
+  var agOrd=E.agenda.slice().sort(function(a,b){ return new Date(a.data)-new Date(b.data); });
+  eid('tabelaAgenda').querySelector('tbody').innerHTML=agOrd.length?
+    agOrd.map(function(a,i){
+      var d=diasAte(a.data);
+      return '<tr><td>'+a.data+'<br><small style="color:'+(d<0?'var(--red)':d<=3?'var(--orange)':'var(--green)')+';">'+(d<0?'Vencido':d===0?'Hoje':d+'d')+'</small></td>'+
+        '<td>'+(a.hora||'—')+'</td><td><span class="badge b-blue">'+a.tipo+'</span></td>'+
+        '<td><strong>'+a.titulo+'</strong></td><td>'+a.responsavel+'</td>'+
+        '<td style="display:flex;gap:4px"><a class="btn-tbl btn-gold-sm" href="'+linkGA(a)+'" target="_blank">Google</a>'+
+        '<button class="btn-tbl btn-del" onclick="rem(\'agenda\','+i+')">✕</button></td></tr>';
+    }).join(''):'<tr><td colspan="6" class="empty-row">Nenhum compromisso</td></tr>';
+
+  // Alertas
+  eid('alertasTela').innerHTML=al.length?
+    al.map(function(a){ return '<div class="alert-full '+(a.nv==='danger'?'a-danger':'a-warn')+'"><strong>🔔 '+a.tipo+'</strong> — '+a.msg+'</div>'; }).join(''):
+    '<div class="alert-full a-success">✓ Nenhum alerta crítico. Tudo em dia!</div>';
+
+  // Financeiro
+  if(!pode('financeiro')){
+    eid('avisoFin').style.display='block'; eid('contFin').style.display='none';
+  } else {
+    eid('avisoFin').style.display='none'; eid('contFin').style.display='flex';
+    var tot=0,rec=0,ab=0,at=0;
+    E.financeiro.forEach(function(f){
+      tot+=f.valor;
+      if(['Recebido','Pago'].includes(f.status)) rec+=f.valor; else ab+=f.valor;
+      if(f.status==='Em atraso') at+=f.valor;
+    });
+    eid('fTotal').textContent=moeda(tot); eid('fRec').textContent=moeda(rec);
+    eid('fAb').textContent=moeda(ab); eid('fAt').textContent=moeda(at);
+    eid('tabelaFin').querySelector('tbody').innerHTML=E.financeiro.length?
+      E.financeiro.map(function(f,i){
+        return '<tr><td>'+f.cliente+'</td><td>'+f.descricao+'</td>'+
+          '<td><span class="badge b-gold">'+f.tipo+'</span></td>'+
+          '<td><strong>'+moeda(f.valor)+'</strong></td>'+
+          '<td><span class="badge '+sb(f.status)+'">'+f.status+'</span></td>'+
+          '<td>'+(f.vencimento||'—')+'</td>'+
+          '<td><button class="btn-tbl btn-del" onclick="rem(\'financeiro\','+i+')">✕</button></td></tr>';
+      }).join(''):'<tr><td colspan="7" class="empty-row">Nenhum lançamento</td></tr>';
+  }
+
+  // USUÁRIOS — tabela com controles
+  if(!pode('usuarios')){
+    eid('avisoUsers').style.display='block'; eid('contUsers').style.display='none';
+  } else {
+    eid('avisoUsers').style.display='none'; eid('contUsers').style.display='flex';
+    eid('tabelaUsers').querySelector('tbody').innerHTML=E.usuarios.map(function(u,i){
+      const protegido=i<2;
+      const ativo=u.ativo!==false;
+      const permsTexto={
+        responsavel:'Acesso total ao sistema',
+        advogado:'Todos os módulos exceto Financeiro e Usuários',
+        estagiario:'Clientes, Tarefas, Agenda e Gerador'
+      };
+      return '<tr style="opacity:'+(ativo?'1':'0.5')+'">'+
+        '<td><strong>'+u.nome+'</strong><br><small>'+u.email+'</small></td>'+
+        '<td>'+
+          (protegido
+            ? '<span class="badge b-gold">'+NIVEL_LABEL[u.nivel]+'</span>'
+            : '<select class="nivel-sel" onchange="alterarNivel('+i+',this.value)">'+
+              '<option value="advogado"'+(u.nivel==='advogado'?' selected':'')+'>Advogado Associado</option>'+
+              '<option value="estagiario"'+(u.nivel==='estagiario'?' selected':'')+'>Estagiário</option>'+
+              '</select>'
+          )+
+        '</td>'+
+        '<td><span class="badge '+nivelBadge(u.nivel)+'">'+NIVEL_LABEL[u.nivel]+'</span></td>'+
+        '<td style="font-size:11px;color:var(--muted)">'+permsTexto[u.nivel]+'</td>'+
+        '<td>'+
+          (ativo ? '<span class="badge b-green">Ativo</span>' : '<span class="badge b-red">Inativo</span>')+
+        '</td>'+
+        '<td style="display:flex;gap:5px">'+
+          (protegido ? '<span style="font-size:11px;color:var(--muted)">Protegido</span>'
+            : '<button class="btn-tbl '+(ativo?'btn-del':'btn-ok')+'" onclick="toggleUsuario('+i+')">'+(ativo?'Desativar':'Ativar')+'</button>'+
+              '<button class="btn-tbl btn-del" onclick="remUsuario('+i+')">✕</button>'
+          )+
+        '</td></tr>';
+    }).join('');
+  }
+}
+
+function remDocCli(cli,nome,arq){
+  var i=E.documentos.findIndex(function(d){ return d.cliente===cli&&d.nome===nome&&d.arquivo===arq; });
+  if(i>=0) rem('documentos',i);
+}
+
+if(usuarioLogado) iniciar();
+
+</script>
+</body>
+</html>
